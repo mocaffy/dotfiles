@@ -211,8 +211,11 @@ local config = {
       -- Neogit を開く
       ["<Leader>gn"] = { "<Cmd>Neogit<CR>", desc = "Neogit" },
       -- Tmux
-      ["<Leader>ttk"] = { "<Cmd>call system('tmux kill-session')<CR>" },
-      ["<Leader>ttd"] = { "<Cmd>call system('tmux detach')<CR>" },
+      ["<Leader>ttk"] = { "<Cmd>call system('tmux kill-session')<CR>", desc = "Kill Session" },
+      ["<Leader>ttd"] = { "<Cmd>call system('tmux detach')<CR>", desc = "Detach Session" },
+      ["<leader>tf"] = { "<Cmd>call system('tmux popup -h 90% -w 90% -d '.getcwd())<CR>", desc = "ToggleTerm float" },
+      ["<leader>tl"] = { "<Cmd>call system('tmux popup -h 90% -w 90% -d'.getcwd().' -E \"lazygit\"')<CR>", desc = "ToggleTerm lazygit" },
+      ["<leader>gg"] = { "<Cmd>call system('tmux popup -h 90% -w 90% -d'.getcwd().' -E \"lazygit\"')<CR>", desc = "ToggleTerm lazygit" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
@@ -468,8 +471,6 @@ local config = {
           -- group name in which-key top level menu
           ["b"] = { name = "Buffer" },
           ["tt"] = { name = "Tmux" },
-          ["ttk"] = { name = "Kill Session" },
-          ["ttd"] = { name = "Detach Session" },
         },
       },
     },
