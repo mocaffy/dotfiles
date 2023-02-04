@@ -475,18 +475,39 @@ local config = {
     --   },
     -- }
 
+    -- タイトルの変更を有効にする
+    vim.opt.title = true
+
     -- 不可視な文字の設定
-    vim.cmd [[
-      set list
-      set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%,space:･
-      set title
-    ]]
-    vim.cmd [[
-      augroup Tmux
-        autocmd! FocusGained * hi Normal guifg=#cbccc6 guibg=#1f2733
-        autocmd! FocusLost * hi Normal guifg=#cbccc6 guibg=#1b222d
-      augroup END
-    ]]
+    vim.opt.list = true
+    vim.opt.listchars = {
+      tab = '»-',
+      trail = '-',
+      eol = '↲',
+      extends = '»',
+      precedes = '«',
+      nbsp = '%',
+      space = '･',
+    }
+
+    -- Normal と NormalNC のハイライト設定を変数に代入
+    local color_normal = vim.api.nvim_get_hl_by_name("Normal", true)
+    local color_normal_nc = vim.api.nvim_get_hl_by_name("NormalNC", true)
+
+    -- Neovim からフォーカスか外れた時に Normal の色を NormalNC にして
+    -- フォーカスが戻った時に Normal に戻す
+    vim.api.nvim_create_autocmd({"FocusLost"}, {
+      pattern = {"*"},
+      callback = function()
+        vim.api.nvim_set_hl(0, "Normal", { fg = color_normal_nc.foreground, bg = color_normal_nc.background})
+      end
+    })
+    vim.api.nvim_create_autocmd({"FocusGained"}, {
+      pattern = {"*"},
+      callback = function()
+        vim.api.nvim_set_hl(0, "Normal", { fg = color_normal.foreground, bg = color_normal.background})
+      end
+    })
   end,
 }
 
