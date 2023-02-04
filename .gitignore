@@ -1,0 +1,48 @@
+# all ignore #
+/*
+/.**
+
+# README.md
+!/README.md
+
+## bin
+!/.bin/
+!/.bin/**
+
+## config
+!/.config/
+
+### alacritty
+!/.config/alacritty/
+!/.config/alacritty/alacritty.yml
+
+## AstroNvim
+!/.config/astro-nvim/
+!/.config/astro-nvim/**
+
+### karabiner
+!/.config/karabiner/
+!/.config/karabiner/karabiner.json
+
+### skhd
+!/.config/skhd/
+!/.config/skhd/.skhdrc
+
+### starship
+!/.config/starship/
+!/.config/starship/starship.toml
+
+### tmux
+!/.config/tmux/
+!/.config/tmux/tmux.conf
+
+### yabai
+!/.config/yabai/
+!/.config/yabai/.yabairc
+
+### zsh
+!/.config/zsh/
+!/.config/zsh/**
+
+.DS_Store
+!/.gitignore
