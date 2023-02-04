@@ -358,6 +358,13 @@ local config = {
         fill = { bg = "#171d26" },
       },
     },
+    ["neo-tree"] = {
+      filesystem = {
+        filtered_items = {
+          visible = true, -- when true, they will just be displayed differently than normal items
+        }
+      }
+    },
     -- カーソルがちらつくことがあるので通知のアニメーションをオフにする
     ["notify"] = {
       stages = "static",
