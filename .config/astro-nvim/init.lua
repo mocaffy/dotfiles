@@ -26,7 +26,7 @@ local config = {
   },
 
   -- Set colorscheme to use
-  colorscheme = "default_theme",
+  colorscheme = "ayu-mirage",
 
   -- Add highlight groups in any theme
   highlights = {
@@ -111,7 +111,7 @@ local config = {
       beacon = false,
       bufferline = true,
       cmp = true,
-      dashboard = true,
+      dashboard = false,
       highlighturl = true,
       hop = false,
       indent_blankline = true,
@@ -144,7 +144,7 @@ local config = {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
+        enabled = false, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
@@ -206,12 +206,16 @@ local config = {
       ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
+      -- ウィンドウの拡大
+      ["<Leader>z"] = { "<Cmd>WindowsMaximize<CR>", desc = "Maximize window" },
+      -- Neogit を開く
+      ["<Leader>gn"] = { "<Cmd>Neogit<CR>", desc = "Neogit" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
     t = {
       -- setting a mapping to false will disable it
-      -- ["<esc>"] = false,
+      ["<esc>"] = false,
     },
   },
 
@@ -219,7 +223,11 @@ local config = {
   plugins = {
     init = {
       -- You can disable default plugins as follows:
-      -- ["goolord/alpha-nvim"] = { disable = true },
+      -- ダッシュボードプラグインを無効に
+      ["goolord/alpha-nvim"] = { disable = true },
+      -- スクロールアニメーションプラグインを無効に
+      ["declancm/cinnamon.nvim"] = { disable = true },
+      -- ["folke/noice.nvim"] = { disable = true },
 
       -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
@@ -231,7 +239,103 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
-
+      --
+      -- スクロールバーを表示するプラグイン
+      {
+        "dstein64/nvim-scrollview",
+        config = function()
+          require("scrollview").setup {
+            excluded_filetypes = { "nerdtree" },
+            current_only = false,
+            winblend = 75,
+            column = 1,
+          }
+        end,
+      },
+      -- 行単位でコミットできるプラグイン
+      {
+        "TimUntersberger/neogit",
+        config = function() require("neogit").setup() end,
+      },
+      -- ayu テーマ すこ
+      {
+        "Shatur/neovim-ayu",
+        config = function()
+          local colors = require "ayu.colors"
+          colors.generate(true) -- Pass `true` to enable mirage
+          require("ayu").setup {
+            overrides = function()
+              return {
+                VertSplit = { fg = "#171d26", bg = "#171d26" },
+                StatusLine = { fg = colors.fg, bg = "#171d26" },
+                StatusLineNC = { fg = colors.fg_idle, bg = "#171d26" },
+                Normal = { fg = colors.fg, bg = "#1f2733" },
+                NormalNC = { fg = colors.fg, bg = "#1b222d" },
+                SignColumn = {},
+                CursorLine = { bg = "#1F252F" },
+              }
+            end,
+          }
+        end,
+      },
+      -- stylus のシンタックスハイライト
+      { "iloginow/vim-stylus" },
+      -- Tmux と Neovim のステータスラインを統合する
+      { "mocaffy/vim-tpipeline" },
+      -- mjml プラグイン
+      { "amadeus/vim-mjml" },
+      -- Git の便利プラグイン
+      {
+        "tanvirtin/vgit.nvim",
+        requires = {
+          "nvim-lua/plenary.nvim",
+        },
+        config = function() require("vgit").setup() end,
+      },
+      -- ウィンドウ(ペイン)の拡大縮小プラグイン
+      {
+        "anuvyklack/windows.nvim",
+        requires = {
+          "anuvyklack/middleclass",
+        },
+        config = function() require("windows").setup() end,
+      },
+      -- Vim コマンド入力をポップアップで表示
+      {
+        "folke/noice.nvim",
+        config = function()
+          require("noice").setup {
+            lsp = {
+              -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+              override = {
+                ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                ["vim.lsp.util.stylize_markdown"] = true,
+                ["cmp.entry.get_documentation"] = true,
+                -- ["config.lsp.hover.enabled"] = false
+              },
+              signature = { enabled = false },
+              hover = { enabled = false },
+            },
+            notify = { enabled = false },
+            -- you can enable a preset for easier configuration
+            presets = {
+              -- bottom_search = true, -- use a classic bottom cmdline for search
+              command_palette = true, -- position the cmdline and popupmenu together
+              long_message_to_split = true, -- long messages will be sent to a split
+              inc_rename = false, -- enables an input dialog for inc-rename.nvim
+              lsp_doc_border = false, -- add a border to hover docs and signature help
+            },
+          }
+        end,
+        requires = {
+          -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+          "MunifTanjim/nui.nvim",
+          -- OPTIONAL:
+          --   `nvim-notify` is only needed, if you want to use the notification view.
+          --   If not available, we use `mini` as the fallback
+          "rcarriga/nvim-notify",
+        },
+      },
       -- We also support a key value style plugin definition similar to NvChad:
       -- ["ray-x/lsp_signature.nvim"] = {
       --   event = "BufRead",
@@ -241,6 +345,18 @@ local config = {
       -- },
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
+    ["bufferline"] = {
+      options = {
+        mode = "tabs",
+      },
+      highlights = {
+        fill = { bg = "#171d26" },
+      },
+    },
+    -- カーソルがちらつくことがあるので通知のアニメーションをオフにする
+    ["notify"] = {
+      stages = "static",
+    },
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
       -- config variable is the default configuration table for the setup function call
       -- local null_ls = require "null-ls"
@@ -357,6 +473,19 @@ local config = {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
+
+    -- 不可視な文字の設定
+    vim.cmd [[
+      set list
+      set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%,space:･
+      set title
+    ]]
+    vim.cmd [[
+      augroup Tmux
+        autocmd! FocusGained * hi Normal guifg=#cbccc6 guibg=#1f2733
+        autocmd! FocusLost * hi Normal guifg=#cbccc6 guibg=#1b222d
+      augroup END
+    ]]
   end,
 }
 
