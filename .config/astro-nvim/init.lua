@@ -210,6 +210,9 @@ local config = {
       ["<Leader>z"] = { "<Cmd>WindowsMaximize<CR>", desc = "Maximize window" },
       -- Neogit を開く
       ["<Leader>gn"] = { "<Cmd>Neogit<CR>", desc = "Neogit" },
+      -- Tmux
+      ["<Leader>ttk"] = { "<Cmd>call system('tmux kill-session')<CR>" },
+      ["<Leader>ttd"] = { "<Cmd>call system('tmux detach')<CR>" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
@@ -464,6 +467,9 @@ local config = {
           -- third key is the key to bring up next level and its displayed
           -- group name in which-key top level menu
           ["b"] = { name = "Buffer" },
+          ["tt"] = { name = "Tmux" },
+          ["ttk"] = { name = "Kill Session" },
+          ["ttd"] = { name = "Detach Session" },
         },
       },
     },
