@@ -247,7 +247,7 @@ local config = {
           require("scrollview").setup {
             excluded_filetypes = { "nerdtree" },
             current_only = false,
-            winblend = 75,
+            winblend = 50,
             column = 1,
           }
         end,
@@ -273,6 +273,7 @@ local config = {
                 NormalNC = { fg = colors.fg, bg = "#1b222d" },
                 SignColumn = {},
                 CursorLine = { bg = "#1F252F" },
+                MsgArea = { fg = "#e1c98e", bg = "#171d26" },
               }
             end,
           }
