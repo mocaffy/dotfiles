@@ -273,7 +273,7 @@ local config = {
             overrides = function()
               if vim.o.background == 'dark' then
                 return {
-                  VertSplit = { fg = "#171d26", bg = "#171d26" },
+                  -- VertSplit = { fg = "#171d26", bg = "#171d26" },
                   StatusLine = { fg = colors.fg, bg = "#171d26" },
                   StatusLineNC = { fg = colors.fg_idle, bg = "#171d26" },
                   Normal = { fg = colors.fg, bg = "#1f2733" },
