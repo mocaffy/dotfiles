@@ -27,7 +27,7 @@ WORKSPACE_PATH=(
 for ((I=1; I<=$WORKSPACE_COUNT; I++)); do
   if [ $I = 1 ]; then
     # 1つ目のワークスペースはセッション作成と同時に作成
-    tmux new-session -d -A -s "$SESSION_NAME" -c $WORKSPACE_PATH[$I] -x 64 -y 64 'nvim'
+    tmux new-session -d -A -s "$SESSION_NAME" -c $WORKSPACE_PATH[$I] -x $COLUMNS -y $LINES 'nvim'
   else
     # 以降のワークスペースはウィンドウを作成
     tmux new-window -c $WORKSPACE_PATH[$I] 'nvim'
