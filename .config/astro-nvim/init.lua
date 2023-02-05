@@ -295,6 +295,8 @@ local config = {
       { "mocaffy/vim-tpipeline" },
       -- mjml プラグイン
       { "amadeus/vim-mjml" },
+      -- markdown プレビュー
+      { "iamcco/markdown-preview.nvim" },
       -- Git の便利プラグイン
       {
         "tanvirtin/vgit.nvim",
