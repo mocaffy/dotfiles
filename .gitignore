@@ -48,5 +48,9 @@
 !/.config/colors/
 !/.config/colors/**
 
+## Firefox
+!/Firefox/
+!/Firefox/**
+
 .DS_Store
 !/.gitignore
