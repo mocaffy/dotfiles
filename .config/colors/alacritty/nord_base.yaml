@@ -1,0 +1,59 @@
+colors:
+  # Default colors
+  primary:
+    background: '#171d26'
+    foreground: '#cfd2d0'
+
+  # Cursor colors
+  cursor:
+    text: '#ffffff'
+    cursor: '#ff00ff'
+
+  # Vi mode cursor colors
+  vi_mode_cursor:
+    text: '#1b1b1b'
+    cursor: '#ebcb8b'
+
+  # Search colors
+  search:
+    # Allowed values are CellForeground/CellBackground, which reference the
+    # affected cell, or hexadecimal colors like #ff00ff.
+    matches:
+      foreground: CellBackground
+      background: '#88c0d0'
+    focused_match:
+      foreground: '#88c0d0'
+      background: CellBackground
+
+  # Normal colors
+  normal:
+    black:   '#3b4252'
+    red:     '#e78482'
+    green:   '#8fc8bb'
+    yellow:  '#ffd484'
+    blue:    '#6db3ce'
+    magenta: '#ad82cb'
+    cyan:    '#7eddde'
+    white:   '#fff9ee'
+
+  # Bright colors
+  bright:
+    black:   '#4c566a'
+    red:     '#e58987'
+    green:   '#96c8bd'
+    yellow:  '#f5cf89'
+    blue:    '#76b3cb'
+    magenta: '#b08bcb'
+    cyan:    '#84d8d9'
+    white:   '#ffffff'
+
+  # Dim colors
+  dim:
+    black:   '#373e4d'
+    red:     '#94545d'
+    green:   '#809575'
+    yellow:  '#b29e75'
+    blue:    '#68809a'
+    magenta: '#8c738c'
+    cyan:    '#6d96a5'
+    white:   '#aeb3bb'
