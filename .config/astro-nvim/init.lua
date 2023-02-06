@@ -217,6 +217,7 @@ local config = {
       -- ["<leader>tf"] = { "<Cmd>call system('tmux popup -h 90% -w 90% -d '.getcwd())<CR>", desc = "ToggleTerm float" },
       -- ["<leader>tl"] = { "<Cmd>call system('tmux popup -h 90% -w 90% -d'.getcwd().' -E \"lazygit\"')<CR>", desc = "ToggleTerm lazygit" },
       -- ["<leader>gg"] = { "<Cmd>call system('tmux popup -h 90% -w 90% -d'.getcwd().' -E \"lazygit\"')<CR>", desc = "ToggleTerm lazygit" },
+      ["<Leader>fr"] = { "<Cmd>Telescope frecency<CR>", desc = "Telescope Frecency" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
@@ -314,6 +315,14 @@ local config = {
         },
         config = function() require("windows").setup() end,
       },
+      -- よく開くファイルを表示
+      {
+        "nvim-telescope/telescope-frecency.nvim",
+        config = function()
+          require "telescope".load_extension("frecency")
+        end,
+        requires = { "kkharji/sqlite.lua" }
+      }
       -- Vim コマンド入力をポップアップで表示
       -- {
       --   "folke/noice.nvim",
