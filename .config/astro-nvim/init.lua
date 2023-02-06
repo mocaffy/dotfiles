@@ -526,16 +526,16 @@ local config = {
 
     -- Neovim からフォーカスか外れた時に Normal の色を NormalNC にして
     -- フォーカスが戻った時に Normal に戻す
-    vim.api.nvim_create_autocmd({"FocusLost"}, {
-      pattern = {"*"},
+    vim.api.nvim_create_autocmd({ "FocusLost" }, {
+      pattern = { "*" },
       callback = function()
-        vim.api.nvim_set_hl(0, "Normal", { fg = color_normal_nc.foreground, bg = color_normal_nc.background})
+        vim.api.nvim_set_hl(0, "Normal", { fg = color_normal_nc.foreground, bg = color_normal_nc.background })
       end
     })
-    vim.api.nvim_create_autocmd({"FocusGained"}, {
-      pattern = {"*"},
+    vim.api.nvim_create_autocmd({ "FocusGained" }, {
+      pattern = { "*" },
       callback = function()
-        vim.api.nvim_set_hl(0, "Normal", { fg = color_normal.foreground, bg = color_normal.background})
+        vim.api.nvim_set_hl(0, "Normal", { fg = color_normal.foreground, bg = color_normal.background })
       end
     })
   end,
