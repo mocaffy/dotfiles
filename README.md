@@ -28,7 +28,7 @@ brew install --cask font-fira-code-nerd-font
 brew install --cask font-victor-mono-nerd-font
 ```
 
-## Starship
+### Starship
 https://starship.rs/  
 `brew install starship`
 
@@ -74,8 +74,8 @@ ln -fns ~/.config/astro-nvim ~/.config/nvim/lua/user
 ```
 
 ```
-ln -fns ~/zsh/.zshrc ~
-ln -fns ~/zsh/.zprofile ~
+ln -fns ~/.config/zsh/.zshrc ~
+ln -fns ~/.config/zsh/.zprofile ~
 ```
 
 Neovim プラグインのインストール  
