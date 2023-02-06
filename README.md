@@ -59,16 +59,19 @@ Clone the repository
 `git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim`
 
 ## セットアップ
-バックアップとってね  
-`mv ~/.config ~/.config.bak` 
+### クローン
+`git clone https://github.com/mocaffy/dotfiles ~`
+
+### バックアップとシンボリックリンク
+(必要に応じて)  
+
 ```
+mv ~/.config ~/.config.bak`
 mv ~/.zshrc ~/.zshrc.bak  
 mv ~/.zprofile ~/.zprofile.bak  
 ```
 
-クローン&シンボリックリンク
 ```
-git clone https://github.com/mocaffy/dotfiles ~
 ln -fns ~/dotfiles/.config ~
 ln -fns ~/.config/astro-nvim ~/.config/nvim/lua/user
 ```
@@ -78,5 +81,12 @@ ln -fns ~/.config/zsh/.zshrc ~
 ln -fns ~/.config/zsh/.zprofile ~
 ```
 
-Neovim プラグインのインストール  
+### tmux-256color のインストール
+https://gist.github.com/ssh352/785395faad3163b2e0de32649f7ed45c
+```
+curl -LO https://invisible-island.net/datafiles/current/terminfo.src.gz && gunzip terminfo.src.gz
+/usr/bin/tic -xe tmux-256color terminfo.src
+```
+
+### Neovim プラグインのインストール  
 `nvim +"PackerSync"`
