@@ -4,7 +4,7 @@
 SESSION_NAME=config
 
 # ワークスペースの数
-WORKSPACE_COUNT=4
+WORKSPACE_COUNT=5
 
 # ワークスペース(タブ)の名前
 WORKSPACE_NAME=(
@@ -12,6 +12,7 @@ WORKSPACE_NAME=(
   yabai
   alacritty
   tmux
+  dotfiles
 )
 
 # ワークスペースのパス
@@ -22,6 +23,26 @@ WORKSPACE_PATH=(
   ~/.config/tmux/
   ~/dotfiles/
 )
+
+# ワークスペースのタブの色
+WORKSPACE_COLOR=(
+  "#9a348e"
+  "#da627d"
+  "#fca17d"
+  "#86bbd8"
+  "#06969A"
+  "#33658a"
+)
+
+# 色付きタブのフォーマットを生成
+WINDOW_STATUS_FORMAT="#[bg=#ffffff,fg=#dddddd]#{?#{!=:#W,"$WORKSPACE_NAME[1]"},▏, }"
+WINDOW_STATUS_CURRENT_FORMAT=""
+for ((I=1; I<=$WORKSPACE_COUNT; I++)); do
+  WINDOW_STATUS_FORMAT+="#{?#{==:#W,"$WORKSPACE_NAME[$I]"},#[fg="$WORKSPACE_COLOR[$I]"],}"
+  WINDOW_STATUS_CURRENT_FORMAT+="#{?#{==:#W,"$WORKSPACE_NAME[$I]"},#[bg="$WORKSPACE_COLOR[$I]"],}"
+done
+WINDOW_STATUS_FORMAT+="#[italics]#[bold]#W "
+WINDOW_STATUS_CURRENT_FORMAT+="#[fg=#dddddd]#{?#{!=:#W,"$WORKSPACE_NAME[1]"},▏, }#[fg=#ffffff]#[italics]#[bold]#W "
 
 # 同じレイアウトで複数のワークスペースを作成
 for ((I=1; I<=$WORKSPACE_COUNT; I++)); do
@@ -42,8 +63,11 @@ for ((I=1; I<=$WORKSPACE_COUNT; I++)); do
   # メインのペインにフォーカスしてズーム
   tmux select-pane -t 0
   tmux resize-pane -Z
-done
 
+  # タブのフォーマットを指定
+  tmux set-window-option window-status-format $WINDOW_STATUS_FORMAT
+  tmux set-window-option window-status-current-format $WINDOW_STATUS_CURRENT_FORMAT
+done
 
 # 最初のウィンドウにフォーカスする
 tmux select-window -t 0
