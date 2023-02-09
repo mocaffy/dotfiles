@@ -23,7 +23,7 @@ return {
     end,
   },
   ["sam4llis/nvim-tundra"] = {
-    conifg = function()
+    config = function()
       require('nvim-tundra').setup(require "user.plugins.tundra")
     end,
   },
