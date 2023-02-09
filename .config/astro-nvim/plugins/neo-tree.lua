@@ -55,7 +55,8 @@ return {
         O = "system_open",
         h = "toggle_hidden",
         Q = "quick_look",
-        ["<cr>"] = "open_extended"
+        ["<cr>"] = "open_extended",
+        ["<space><space>"] = "quick_view"
       },
     },
     commands = {
@@ -69,6 +70,10 @@ return {
         else
           commands.open(state)
         end
+      end,
+      quick_view = function(state)
+        local path = state.tree:get_node():get_id()
+        vim.fn.system{ "qlmanage", "-p", path }
       end,
     },
   },
