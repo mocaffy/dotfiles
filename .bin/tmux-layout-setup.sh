@@ -35,14 +35,14 @@ WORKSPACE_COLOR=(
 )
 
 # 色付きタブのフォーマットを生成
-WINDOW_STATUS_FORMAT="#[bg=#ffffff,fg=#dddddd]#{?#{!=:#W,"$WORKSPACE_NAME[1]"},▏, }"
+WINDOW_STATUS_FORMAT="#[fg=#dddddd]#{?#{!=:#W,"$WORKSPACE_NAME[1]"},#[fg=#11131a]▏, }"
 WINDOW_STATUS_CURRENT_FORMAT=""
 for ((I=1; I<=$WORKSPACE_COUNT; I++)); do
   WINDOW_STATUS_FORMAT+="#{?#{==:#W,"$WORKSPACE_NAME[$I]"},#[fg="$WORKSPACE_COLOR[$I]"],}"
   WINDOW_STATUS_CURRENT_FORMAT+="#{?#{==:#W,"$WORKSPACE_NAME[$I]"},#[bg="$WORKSPACE_COLOR[$I]"],}"
 done
-WINDOW_STATUS_FORMAT+="#[italics]#[bold]#W "
-WINDOW_STATUS_CURRENT_FORMAT+="#[fg=#dddddd]#{?#{!=:#W,"$WORKSPACE_NAME[1]"},▏, }#[fg=#ffffff]#[italics]#[bold]#W "
+WINDOW_STATUS_FORMAT+=" #[italics]#[bold]#[fg=#ffffff]#W "
+WINDOW_STATUS_CURRENT_FORMAT+="#[fg=#dddddd]#{?#{!=:#W,"$WORKSPACE_NAME[1]"},#[fg=#11131a]▏, }#[fg=#ffffff] #[italics]#[bold]#W "
 
 # 同じレイアウトで複数のワークスペースを作成
 for ((I=1; I<=$WORKSPACE_COUNT; I++)); do

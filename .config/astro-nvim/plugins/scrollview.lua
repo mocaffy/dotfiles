@@ -1,6 +1,6 @@
 return {
   excluded_filetypes = { "nerdtree" },
-  current_only = false,
-  winblend = 50,
+  current_only = true,
+  winblend = 80,
   column = 1,
 }
