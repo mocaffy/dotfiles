@@ -22,6 +22,11 @@ return {
       require("ayu").setup(require "user.plugins.ayu")
     end,
   },
+  ["sam4llis/nvim-tundra"] = {
+    conifg = function()
+      require('nvim-tundra').setup(require "user.plugins.tundra")
+    end,
+  },
 
   -- stylus のシンタックスハイライト
   ["iloginow/vim-stylus"] = {},
