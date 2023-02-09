@@ -18,6 +18,9 @@ return function()
   -- タイトルの変更を有効にする
   vim.opt.title = true
 
+  -- swapファイルを無効にする
+  vim.opt.swapfile = false
+
   -- 不可視な文字の設定
   vim.opt.list = true
   vim.opt.listchars = {
