@@ -24,6 +24,10 @@
 !/.config/karabiner/
 !/.config/karabiner/karabiner.json
 
+### lazygit
+!/.config/lazygit/
+!/.config/lazygit/**
+
 ### skhd
 !/.config/skhd/
 !/.config/skhd/.skhdrc
