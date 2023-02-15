@@ -1,5 +1,5 @@
-# open terminal
-cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
+# dropdown terminal
+ctrl - q : ~/dotfiles/.bin/dropdown.fish Alacritty
 
 # focus window
 alt - x : yabai -m window --focus recent
