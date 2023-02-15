@@ -1,6 +1,9 @@
 # dropdown terminal
 ctrl - q : ~/dotfiles/.bin/dropdown.fish Alacritty
 
+ctrl - left  : tmux prev
+ctrl - right : tmux next
+
 # focus window
 alt - x : yabai -m window --focus recent
 alt - h : yabai -m window --focus west
