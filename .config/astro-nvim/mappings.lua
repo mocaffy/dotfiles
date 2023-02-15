@@ -17,6 +17,7 @@ return {
     ["<leader>tf"] = { "<Cmd>call system('tmux popup -h 90% -w 90% -d '.getcwd())<CR>", desc = "ToggleTerm float" },
     ["<leader>tl"] = { "<Cmd>call system('tmux popup -h 90% -w 90% -d'.getcwd().' -E \"export XDG_CONFIG_HOME=$HOME/.config ; lazygit\"')<CR>", desc = "ToggleTerm lazygit" },
     ["<leader>gg"] = { "<Cmd>call system('tmux popup -h 90% -w 90% -d'.getcwd().' -E \"export XDG_CONFIG_HOME=$HOME/.config ; lazygit\"')<CR>", desc = "ToggleTerm lazygit" },
+    ["<leader>gC"] = { "<Cmd>call system('tmux popup -d'.getcwd().' -E \"gitmoji -c\"')<CR>", desc = "Gitmoji Commit" },
     ["<Leader>fr"] = { "<Cmd>Telescope frecency<CR>", desc = "Telescope Frecency" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
