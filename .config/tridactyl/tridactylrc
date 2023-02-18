@@ -168,3 +168,6 @@
 " 
 " " For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
 " " vim: set filetype=tridactyl
+
+keymap J K
+keymap K J
