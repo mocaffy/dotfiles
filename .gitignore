@@ -36,6 +36,10 @@
 !/.config/starship/
 !/.config/starship/starship.toml
 
+### triactyl
+!/.config/tridactyl/
+!/.config/tridactyl/**
+
 ### tmux
 !/.config/tmux/
 !/.config/tmux/tmux.conf
