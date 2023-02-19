@@ -28,10 +28,10 @@ WORKSPACE_PATH=(
 for ((I=1; I<=$WORKSPACE_COUNT; I++)); do
   if [ $I = 1 ]; then
     # 1つ目のワークスペースはセッション作成と同時に作成
-    tmux new-session -d -A -s "$SESSION_NAME" -c $WORKSPACE_PATH[$I] -x $COLUMNS -y $LINES 'nvim'
+    tmux new-session -d -A -s "$SESSION_NAME" -c $WORKSPACE_PATH[$I] -x $COLUMNS -y $LINES 'nvim +"Neotree focus"'
   else
     # 以降のワークスペースはウィンドウを作成
-    tmux new-window -c $WORKSPACE_PATH[$I] 'nvim'
+    tmux new-window -c $WORKSPACE_PATH[$I] 'nvim +"Neotree focus"'
   fi
   tmux set -p remain-on-exit on
   # ウィンドウの名前を変更
@@ -42,7 +42,7 @@ for ((I=1; I<=$WORKSPACE_COUNT; I++)); do
   tmux split-window -h -p 50 -c "#{pane_current_path}"
   # メインのペインにフォーカスしてズーム
   tmux select-pane -t 0
-  tmux resize-pane -Z
+  # tmux resize-pane -Z
 done
 
 # 最初のウィンドウにフォーカスする
