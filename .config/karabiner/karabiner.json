@@ -88,7 +88,7 @@
                                     "key_code": "h",
                                     "modifiers": {
                                         "mandatory": [
-                                            "command"
+                                            "left_command"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -107,7 +107,7 @@
                                     "key_code": "j",
                                     "modifiers": {
                                         "mandatory": [
-                                            "command"
+                                            "left_command"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -126,7 +126,7 @@
                                     "key_code": "k",
                                     "modifiers": {
                                         "mandatory": [
-                                            "command"
+                                            "left_command"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -145,7 +145,7 @@
                                     "key_code": "l",
                                     "modifiers": {
                                         "mandatory": [
-                                            "command"
+                                            "left_command"
                                         ],
                                         "optional": [
                                             "caps_lock"
