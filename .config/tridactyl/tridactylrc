@@ -171,3 +171,7 @@ set hintdelay 100
 
 keymap J K
 keymap K J
+
+unbind --mode=normal <F1>
+bind <space>e !s cliclick kp:f1 kp:esc
+
