@@ -4,6 +4,8 @@ ctrl - q : ~/dotfiles/.bin/dropdown.fish Alacritty
 ctrl - left  : tmux prev
 ctrl - right : tmux next
 
+ctrl - z     : tmux resizep -Z
+
 # focus window
 alt - x : yabai -m window --focus recent
 alt - h : yabai -m window --focus west
@@ -170,3 +172,15 @@ alt - p : yabai -m window --toggle border && \
 ctrl + alt - a : yabai -m space --layout bsp
 ctrl + alt - d : yabai -m space --layout float
 ctrl + alt - s : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+
+# is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?)(diff)?$'"
+
+ctrl - h      : $(ps -o state= -o comm= -t $(tmux display -p '#{pane_tty}') | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?)(diff)?$') && tmux send-keys C-h     || tmux select-pane -L
+ctrl - j      : $(ps -o state= -o comm= -t $(tmux display -p '#{pane_tty}') | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?)(diff)?$') && tmux send-keys C-j     || tmux select-pane -D
+ctrl - k      : $(ps -o state= -o comm= -t $(tmux display -p '#{pane_tty}') | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?)(diff)?$') && tmux send-keys C-k     || tmux select-pane -U
+ctrl - l      : $(ps -o state= -o comm= -t $(tmux display -p '#{pane_tty}') | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?)(diff)?$') && tmux send-keys C-l     || tmux select-pane -R
+
+ctrl - left   : tmux resize-pane -L 3
+ctrl - down   : tmux resize-pane -D 3
+ctrl - up     : tmux resize-pane -U 3
+ctrl - right  : tmux resize-pane -R 3
