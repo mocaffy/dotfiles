@@ -70,5 +70,26 @@ return {
     config = function()
       require("noice").setup(require "user.plugins.noice")
     end,
+  },
+
+  ["tridactyl/vim-tridactyl"] = {},
+
+  {
+        "jose-elias-alvarez/typescript.nvim",
+        after = "mason-lspconfig.nvim",
+        config = function()
+          require("typescript").setup {
+            server = astronvim.lsp.server_settings "tsserver",
+          }
+        end,
+  },
+  {
+    "sigmasd/deno-nvim",
+    after = "mason-lspconfig.nvim",
+    config = function()
+      require("deno-nvim").setup {
+        server = astronvim.lsp.server_settings "denols",
+      }
+    end
   }
 }
