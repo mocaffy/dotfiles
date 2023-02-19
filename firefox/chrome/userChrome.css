@@ -45,7 +45,7 @@ That change should take effect on your next startup.
 :root[sizemode="fullscreen"]{ margin-top: 0px !important; }
 
 #navigator-toolbox{
-  border: 5px solid #171d26 !important;
+  border: 4px solid #171d26 !important;
   border-bottom: none !important;
   box-sizing:border-box;
   position: fixed !important;
@@ -89,5 +89,5 @@ That change should take effect on your next startup.
 
 #browser, #browser-bottombox {
  /* Gray side borders for content area and bottom toolbars */
- border: 5px solid #171d26 !important;
+ border: 4px solid #171d26 !important;
 }
