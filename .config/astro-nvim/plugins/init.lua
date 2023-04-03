@@ -22,9 +22,25 @@ return {
       require("ayu").setup(require "user.plugins.ayu")
     end,
   },
+
+  -- かわいいパステルテーマ
   ["sam4llis/nvim-tundra"] = {
     config = function()
-      require('nvim-tundra').setup(require "user.plugins.tundra")
+      require("nvim-tundra").setup(require "user.plugins.tundra")
+    end,
+  },
+
+  -- かわいいパステルテーマ
+  ["catppuccin/nvim"] = {
+    as = "catppuccin",
+    config = function()
+      require("catppuccin").setup(require "user.plugins.catppuccin")
+    end,
+  },
+
+  ["folke/tokyonight.nvim"] = {
+    config = function()
+      require("tokyonight").setup(require "user.plugins.tokyonight")
     end,
   },
 

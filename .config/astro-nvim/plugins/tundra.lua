@@ -1,7 +1,9 @@
+local ss = require("nvim-tundra.stylesheet.arctic")
+
 return {
   transparent_background = false,
   dim_inactive_windows = {
-    enabled = false,
+    enabled = true,
     color = nil,
   },
   sidebars = {
@@ -46,6 +48,15 @@ return {
   },
   overwrite = {
     colors = {},
-    highlights = {},
+    highlights = {
+      VertSplit = { fg = ss.bg.floating, bg = ss.bg.floating },
+      StatusLine = { fg = ss.fg.normal, bg = ss.bg.floating },
+      StatusLineNC = { fg = ss.fg.normal, bg = ss.bg.floating },
+      -- Normal = { fg = ss.fg.normal, bg = "#1f2733" },
+      -- NormalNC = { fg = ss.fg.normal, bg = "#1b222d" },
+      SignColumn = {},
+      -- CursorLine = { bg = "#1F252F" },
+      MsgArea = { fg = "#e1c98e", bg = "#171d26" },
+    },
   },
 }
