@@ -2,7 +2,8 @@
     "global": {
         "check_for_updates_on_startup": true,
         "show_in_menu_bar": true,
-        "show_profile_name_in_menu_bar": false
+        "show_profile_name_in_menu_bar": false,
+        "unsafe_ui": false
     },
     "profiles": [
         {
@@ -15,6 +16,60 @@
                     "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
+                    {
+                        "conditions": [
+                            {
+                                "bundle_identifiers": [
+                                    "^org\\.mozilla\\.firefox$"
+                                ],
+                                "type": "frontmost_application_if"
+                            }
+                        ],
+                        "description": "Firefox タブ切り替え l-cmd + ctrl + J/K",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": [
+                                            "left_control"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": [
+                                            "left_control",
+                                            "left_shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
                     {
                         "description": "コマンドキーを単体で押したときに、英数・かなキーを送信する。（左コマンドキーは英数、右コマンドキーはかな） (rev 3)",
                         "manipulators": [
@@ -160,57 +215,53 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Change Command + u/i to home/end",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "u",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "home"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "i",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "end"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
             "devices": [
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": false,
-                        "is_pointing_device": true,
-                        "product_id": 283,
-                        "vendor_id": 1390
-                    },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": [
-                        {
-                            "from": {
-                                "pointing_button": "button4"
-                            },
-                            "to": [
-                                {
-                                    "apple_vendor_keyboard_key_code": "mission_control"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "pointing_button": "button5"
-                            },
-                            "to": [
-                                {
-                                    "apple_vendor_keyboard_key_code": "launchpad"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 6163,
-                        "vendor_id": 9390
-                    },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": true,
-                    "simple_modifications": []
-                },
                 {
                     "disable_built_in_keyboard_if_exists": false,
                     "fn_function_keys": [],
@@ -222,41 +273,19 @@
                     },
                     "ignore": false,
                     "manipulate_caps_lock_led": true,
-                    "simple_modifications": []
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 1957,
-                        "vendor_id": 1118
-                    },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": true,
                     "simple_modifications": [
                         {
                             "from": {
-                                "key_code": "left_option"
+                                "key_code": "caps_lock"
                             },
                             "to": [
                                 {
-                                    "key_code": "left_command"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "right_option"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "right_command"
+                                    "key_code": "left_control"
                                 }
                             ]
                         }
-                    ]
+                    ],
+                    "treat_as_built_in_keyboard": false
                 },
                 {
                     "disable_built_in_keyboard_if_exists": false,
@@ -264,38 +293,13 @@
                     "identifiers": {
                         "is_keyboard": false,
                         "is_pointing_device": true,
-                        "product_id": 1957,
-                        "vendor_id": 1118
-                    },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": []
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 259,
-                        "vendor_id": 1267
-                    },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": true,
-                    "simple_modifications": []
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": true,
-                        "product_id": 20737,
-                        "vendor_id": 3141
+                        "product_id": 640,
+                        "vendor_id": 1452
                     },
                     "ignore": true,
-                    "manipulate_caps_lock_led": true,
-                    "simple_modifications": []
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [],
+                    "treat_as_built_in_keyboard": false
                 },
                 {
                     "disable_built_in_keyboard_if_exists": false,
@@ -303,12 +307,13 @@
                     "identifiers": {
                         "is_keyboard": true,
                         "is_pointing_device": false,
-                        "product_id": 523,
+                        "product_id": 34304,
                         "vendor_id": 1452
                     },
                     "ignore": false,
                     "manipulate_caps_lock_led": true,
-                    "simple_modifications": []
+                    "simple_modifications": [],
+                    "treat_as_built_in_keyboard": false
                 }
             ],
             "fn_function_keys": [
@@ -368,7 +373,7 @@
                     },
                     "to": [
                         {
-                            "apple_vendor_keyboard_key_code": "launchpad"
+                            "key_code": "f6"
                         }
                     ]
                 },
@@ -438,208 +443,7 @@
                 "delay_milliseconds_before_open_device": 1000
             },
             "selected": true,
-            "simple_modifications": [
-                {
-                    "from": {
-                        "key_code": "keypad_0"
-                    },
-                    "to": [
-                        {
-                            "key_code": "p"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_1"
-                    },
-                    "to": [
-                        {
-                            "key_code": "g"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_2"
-                    },
-                    "to": [
-                        {
-                            "key_code": "h"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_3"
-                    },
-                    "to": [
-                        {
-                            "key_code": "i"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_4"
-                    },
-                    "to": [
-                        {
-                            "key_code": "j"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_5"
-                    },
-                    "to": [
-                        {
-                            "key_code": "k"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_6"
-                    },
-                    "to": [
-                        {
-                            "key_code": "l"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_7"
-                    },
-                    "to": [
-                        {
-                            "key_code": "m"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_8"
-                    },
-                    "to": [
-                        {
-                            "key_code": "n"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_9"
-                    },
-                    "to": [
-                        {
-                            "key_code": "o"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_asterisk"
-                    },
-                    "to": [
-                        {
-                            "key_code": "c"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_enter"
-                    },
-                    "to": [
-                        {
-                            "key_code": "f"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_hyphen"
-                    },
-                    "to": [
-                        {
-                            "key_code": "d"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_num_lock"
-                    },
-                    "to": [
-                        {
-                            "key_code": "a"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_period"
-                    },
-                    "to": [
-                        {
-                            "key_code": "q"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_plus"
-                    },
-                    "to": [
-                        {
-                            "key_code": "e"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "keypad_slash"
-                    },
-                    "to": [
-                        {
-                            "key_code": "b"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "page_down"
-                    },
-                    "to": [
-                        {
-                            "key_code": "left_command"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "page_up"
-                    },
-                    "to": [
-                        {
-                            "key_code": "left_option"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "pause"
-                    },
-                    "to": [
-                        {
-                            "key_code": "right_control"
-                        }
-                    ]
-                }
-            ],
+            "simple_modifications": [],
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "indicate_sticky_modifier_keys_state": true,

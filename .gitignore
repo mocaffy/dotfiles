@@ -23,6 +23,8 @@
 ### karabiner
 !/.config/karabiner/
 !/.config/karabiner/karabiner.json
+!/.config/karabiner/assets/
+!/.config/karabiner/assets/**
 
 ### lazygit
 !/.config/lazygit/
