@@ -51,4 +51,16 @@ return function()
       vim.api.nvim_set_hl(0, "Normal", { fg = color_normal.foreground, bg = color_normal.background })
     end
   })
+  vim.api.nvim_create_autocmd({ "FocusGained" }, {
+    pattern = { "*" },
+    callback = function()
+      vim.cmd "call system('issw com.apple.keylayout.ABC')"
+    end
+  })
+  vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+    pattern = { "*" },
+    callback = function()
+      vim.cmd "call system('issw com.apple.keylayout.ABC')"
+    end
+  })
 end
