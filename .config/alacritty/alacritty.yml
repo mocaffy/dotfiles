@@ -909,7 +909,7 @@ key_bindings:
 colors:
   # Default colors
   primary:
-    background: '#0E1420' # $TERM_BG
+    background: '#0C1125' # $TERM_BG
     foreground: '#cfd2d0'
 
   # Cursor colors
