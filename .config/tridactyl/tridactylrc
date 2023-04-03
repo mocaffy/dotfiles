@@ -169,9 +169,11 @@ set hintdelay 100
 " " For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
 " " vim: set filetype=tridactyl
 
-keymap J K
-keymap K J
-
 unbind --mode=normal <F1>
-bind <space>e !s cliclick kp:f1 kp:esc
+unbind --mode=normal J
+unbind --mode=normal K
+bind J tabnext
+bind K tabprev
+bind <space>e !s /usr/local/bin/cliclick kp:esc kd:alt,cmd,ctrl,shift t:'t'
+bind <space>g !s /usr/local/bin/cliclick kp:esc kd:alt,cmd,ctrl,shift t:'g'
 
