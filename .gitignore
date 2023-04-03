@@ -42,6 +42,10 @@
 !/.config/tridactyl/
 !/.config/tridactyl/**
 
+### vifm
+!/.config/vifm/
+!/.config/vifm/vifmrc
+
 ### tmux
 !/.config/tmux/
 !/.config/tmux/tmux.conf
