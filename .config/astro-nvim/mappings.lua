@@ -1,7 +1,13 @@
-local is_available = astronvim.is_available
+-- Mapping data with "desc" stored directly by vim.keymap.set().
+--
+-- Please use this mappings table to set keyboard mapping since this is the
+-- lower level configuration and more robust one. (which-key will
+-- automatically pick-up stored data by this setting.)
+
 local toggle_term_cmd = astronvim.toggle_term_cmd
 
-local maps = {
+return {
+  -- first key is the mode
   n = {
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
@@ -33,27 +39,3 @@ local maps = {
     ["<esc>"] = false,
   },
 }
--- Smart Splits
-if is_available "smart-splits.nvim" then
-  -- Better window navigation
-  -- maps.n["<C-h>"] = { function() require("smart-splits").move_cursor_left() end, desc = "Move to left split" }
-  -- maps.n["<C-j>"] = { function() require("smart-splits").move_cursor_down() end, desc = "Move to below split" }
-  -- maps.n["<C-k>"] = { function() require("smart-splits").move_cursor_up() end, desc = "Move to above split" }
-  -- maps.n["<C-l>"] = { function() require("smart-splits").move_cursor_right() end, desc = "Move to right split" }
-
-  -- Resize with arrows
-  maps.n["<C-Up>"] = false
-  maps.n["<C-Down>"] = false
-  -- maps.n["<C-Left>"] = { function() require("smart-splits").resize_left() end, desc = "Resize split left" }
-  -- maps.n["<C-Right>"] = { function() require("smart-splits").resize_right() end, desc = "Resize split right" }
-else
-  -- maps.n["<C-h>"] = { "<C-w>h", desc = "Move to left split" }
-  -- maps.n["<C-j>"] = { "<C-w>j", desc = "Move to below split" }
-  -- maps.n["<C-k>"] = { "<C-w>k", desc = "Move to above split" }
-  -- maps.n["<C-l>"] = { "<C-w>l", desc = "Move to right split" }
-  maps.n["<C-Up>"] = false
-  maps.n["<C-Down>"] = false
-  -- maps.n["<C-Left>"] = { "<cmd>vertical resize -2<CR>", desc = "Resize split left" }
-  -- maps.n["<C-Right>"] = { "<cmd>vertical resize +2<CR>", desc = "Resize split right" }
-end
-return maps

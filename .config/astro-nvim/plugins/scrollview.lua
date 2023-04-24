@@ -1,6 +1,12 @@
+-- スクロールバーを表示するプラグイン
 return {
-  excluded_filetypes = { "nerdtree" },
-  current_only = true,
-  winblend = 80,
-  column = 1,
+  "dstein64/nvim-scrollview",
+  config = function()
+    require("scrollview").setup({
+      excluded_filetypes = { "nerdtree" },
+      current_only = true,
+      winblend = 80,
+      column = 1,
+    })
+  end,
 }
