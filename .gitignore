@@ -30,6 +30,10 @@
 !/.config/lazygit/
 !/.config/lazygit/**
 
+### nvim-term
+!/.config/nvim-term/
+!/.config/nvim-term/**
+
 ### skhd
 !/.config/skhd/
 !/.config/skhd/.skhdrc
