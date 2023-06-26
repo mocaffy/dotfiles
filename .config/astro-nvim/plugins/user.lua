@@ -42,6 +42,7 @@ return {
   -- 行単位でコミットできるプラグイン
   {
     "TimUntersberger/neogit",
+    dependencies = 'nvim-lua/plenary.nvim',
     config = function()
       require("neogit").setup()
     end,
@@ -61,6 +62,7 @@ return {
     "anuvyklack/windows.nvim",
     dependencies = {
       "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim",
     },
     config = function() require("windows").setup() end,
   },
