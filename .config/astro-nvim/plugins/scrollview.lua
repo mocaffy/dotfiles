@@ -5,7 +5,7 @@ return {
     require("scrollview").setup({
       excluded_filetypes = { "nerdtree" },
       current_only = true,
-      winblend = 80,
+      winblend = 70,
       column = 1,
     })
   end,

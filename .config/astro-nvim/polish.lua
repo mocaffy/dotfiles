@@ -36,6 +36,8 @@ return function()
   -- Normal と NormalNC のハイライト設定を変数に代入
   local color_normal = vim.api.nvim_get_hl_by_name("Normal", true)
   local color_normal_nc = vim.api.nvim_get_hl_by_name("NormalNC", true)
+  local color_winbar = vim.api.nvim_get_hl_by_name("WinBar", true)
+  local color_winbar_nc = vim.api.nvim_get_hl_by_name("WinBarNC", true)
 
   -- Neovim からフォーカスか外れた時に Normal の色を NormalNC にして
   -- フォーカスが戻った時に Normal に戻す
@@ -43,12 +45,14 @@ return function()
     pattern = { "*" },
     callback = function()
       vim.api.nvim_set_hl(0, "Normal", { fg = color_normal_nc.foreground, bg = color_normal_nc.background })
+      vim.api.nvim_set_hl(0, "WinBar", { fg = color_winbar_nc.foreground, bg = color_winbar_nc.background })
     end
   })
   vim.api.nvim_create_autocmd({ "FocusGained" }, {
     pattern = { "*" },
     callback = function()
       vim.api.nvim_set_hl(0, "Normal", { fg = color_normal.foreground, bg = color_normal.background })
+      vim.api.nvim_set_hl(0, "WinBar", { fg = color_winbar.foreground, bg = color_winbar.background })
     end
   })
   vim.api.nvim_create_autocmd({ "FocusGained" }, {
