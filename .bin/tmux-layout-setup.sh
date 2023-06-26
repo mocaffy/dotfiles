@@ -37,9 +37,8 @@ for ((I=1; I<=$WORKSPACE_COUNT; I++)); do
   # ウィンドウの名前を変更
   tmux rename-window "$WORKSPACE_NAME[$I]"
   # 縦 25% の位置で分割
-  tmux split-window -v -p 25 -c "#{pane_current_path}"
-  # 横 50% の位置で分割
-  tmux split-window -h -p 50 -c "#{pane_current_path}"
+  tmux split-window -v -p 25 -c "#{pane_current_path}" 'NVIM_APPNAME=nvim-term nvim -u ~/.config/nvim-term/init.lua -c "ter" -c "vs" -c "ter"'
+  tmux set -p remain-on-exit on
   # メインのペインにフォーカスしてズーム
   tmux select-pane -t 0
   # tmux resize-pane -Z
