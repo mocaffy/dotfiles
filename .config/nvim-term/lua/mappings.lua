@@ -23,4 +23,5 @@ maps.n["<Leader>z"] = { "<Cmd>WindowsMaximize<CR>", desc = "Maximize window" }
 -- Neogit を開く
 maps.n["<Leader>gn"] = { "<Cmd>Neogit<CR>", desc = "Neogit" }
 
+maps.n["<Leader>ttr"] = { "<Cmd>call system('tmux respawn-pane -k')<CR>", desc = "Restart Neovim" }
 return maps
