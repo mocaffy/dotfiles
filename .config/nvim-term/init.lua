@@ -24,7 +24,7 @@ vim.opt.swapfile = false
 
 require("lazy").setup("plugins")
 
-local ok, _ = pcall(vim.cmd, 'colorscheme ayu-mirage')
+local ok, _ = pcall(vim.cmd, 'colorscheme nordfox')
 if not ok then
   vim.cmd 'colorscheme default'
 end

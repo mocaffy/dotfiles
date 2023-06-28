@@ -24,4 +24,8 @@ maps.n["<Leader>z"] = { "<Cmd>WindowsMaximize<CR>", desc = "Maximize window" }
 maps.n["<Leader>gn"] = { "<Cmd>Neogit<CR>", desc = "Neogit" }
 
 maps.n["<Leader>ttr"] = { "<Cmd>call system('tmux respawn-pane -k')<CR>", desc = "Restart Neovim" }
+
+maps.n["<Leader>s"] = { "<Cmd>BrowserSearch<CR>", desc = "Browser Search" }
+maps.v["<Leader>s"] = { "<Cmd>BrowserSearch<CR>", desc = "Browser Search" }
+
 return maps
