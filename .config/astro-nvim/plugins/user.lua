@@ -39,15 +39,6 @@ return {
   -- markdown プレビュー
   "iamcco/markdown-preview.nvim",
 
-  -- 行単位でコミットできるプラグイン
-  {
-    "TimUntersberger/neogit",
-    dependencies = 'nvim-lua/plenary.nvim',
-    config = function()
-      require("neogit").setup()
-    end,
-  },
-
   -- Git の便利プラグイン
   {
     "tanvirtin/vgit.nvim",
