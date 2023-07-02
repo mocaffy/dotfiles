@@ -1,10 +1,30 @@
 return {
+  {
+    "anuvyklack/windows.nvim",
+    dependencies = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim",
+    },
+    config = function()
+      vim.o.winminwidth = 2
+      require("windows").setup()
+    end,
+  },
+
   -- 行単位でコミットできるプラグイン
   {
     "TimUntersberger/neogit",
     dependencies = 'nvim-lua/plenary.nvim',
     config = function()
-      require("neogit").setup()
+      require("neogit").setup({
+        auto_refresh = true,
+      })
+      vim.cmd([[
+        augroup DefaultRefreshEvents
+          au!
+          au FocusGained * lua require('neogit').dispatch_refresh(true)
+        augroup END
+      ]])
     end,
   },
 

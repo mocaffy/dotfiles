@@ -19,6 +19,7 @@ return {
     ["<Leader>z"] = { "<Cmd>WindowsMaximize<CR>", desc = "Maximize window" },
     -- Neogit を開く
     ["<Leader>gn"] = { "<Cmd>Neogit<CR>", desc = "Neogit" },
+    ["<Leader>gn"] = { function() require('neogit').open({ kind = "vsplit" }) end, desc = "Neogit" },
     -- Tmux
     ["<Leader>ttks"] = { "<Cmd>call system('tmux kill-session')<CR>", desc = "Kill Session" },
     ["<Leader>ttkww"] = { "<Cmd>call system('tmux kill-window')<CR>", desc = "Kill Window" },
