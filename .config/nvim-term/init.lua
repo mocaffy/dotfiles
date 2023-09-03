@@ -92,3 +92,8 @@ vim.cmd([[
       end
     end
   })
+
+-- フォーカスがターミナルウィンドウから離れたときにノーマルモードに切り替える
+vim.cmd[[
+  autocmd WinLeave,FocusLost * if &buftype == 'terminal' | stopinsert | endif
+]]
