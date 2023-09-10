@@ -33,29 +33,50 @@ return function()
     space = '･',
   }
 
-  local winactive  = vim.api.nvim_create_namespace('winactive')
-  local wininactive  = vim.api.nvim_create_namespace('wininactive')
-  local splitactive  = vim.api.nvim_create_namespace('splitactive')
-  local splitinactive  = vim.api.nvim_create_namespace('splitinactive')
+  
+  winactive  = vim.api.nvim_create_namespace('winactive')
+  wininactive  = vim.api.nvim_create_namespace('wininactive')
+  splitactive  = vim.api.nvim_create_namespace('splitactive')
+  splitinactive  = vim.api.nvim_create_namespace('splitinactive')
 
   -- Normal と NormalNC のハイライト設定を変数に代入
-  local color_normal = vim.api.nvim_get_hl_by_name("Normal", true)
-  local color_normal_nc = vim.api.nvim_get_hl_by_name("NormalNC", true)
-  local color_winbar = vim.api.nvim_get_hl_by_name("WinBar", true)
-  local color_winbar_nc = vim.api.nvim_get_hl_by_name("WinBarNC", true)
+  color_normal = vim.api.nvim_get_hl_by_name("Normal", true)
+  color_normal_nc = vim.api.nvim_get_hl_by_name("NormalNC", true)
+  color_winbar = vim.api.nvim_get_hl_by_name("WinBar", true)
+  color_winbar_nc = vim.api.nvim_get_hl_by_name("WinBarNC", true)
 
-  local color_vertsplit = vim.api.nvim_get_hl_by_name("VertSplit", true)
-  local color_vertsplit_nc = vim.api.nvim_get_hl_by_name("VertSplitNC", true)
+  color_vertsplit = vim.api.nvim_get_hl_by_name("VertSplit", true)
+  color_vertsplit_nc = vim.api.nvim_get_hl_by_name("VertSplitNC", true)
 
-  vim.api.nvim_set_hl(wininactive, "Normal", { fg = color_normal_nc.foreground, bg = color_normal_nc.background })
-  vim.api.nvim_set_hl(wininactive, "WinBar", { fg = color_winbar_nc.foreground, bg = color_winbar_nc.background })
-  vim.api.nvim_set_hl(splitinactive, "VertSplit", { fg = color_vertsplit_nc.foreground, bg = color_vertsplit_nc.background })
-  vim.api.nvim_set_hl(splitinactive, "NeoTreeVertSplit", { fg = color_vertsplit.foreground, bg = color_vertsplit.background })
+  local set_color_config = function()
+    winactive  = vim.api.nvim_create_namespace('winactive')
+    wininactive  = vim.api.nvim_create_namespace('wininactive')
+    splitactive  = vim.api.nvim_create_namespace('splitactive')
+    splitinactive  = vim.api.nvim_create_namespace('splitinactive')
 
-  vim.api.nvim_set_hl(winactive, "Normal", { fg = color_normal.foreground, bg = color_normal.background })
-  vim.api.nvim_set_hl(winactive, "WinBar", { fg = color_winbar.foreground, bg = color_winbar.background })
-  vim.api.nvim_set_hl(splitactive, "VertSplit", { fg = color_vertsplit.foreground, bg = color_vertsplit.background })
-  vim.api.nvim_set_hl(splitactive, "NeoTreeVertSplit", { fg = color_vertsplit.foreground, bg = color_vertsplit.background })
+    -- Normal と NormalNC のハイライト設定を変数に代入
+    color_normal = vim.api.nvim_get_hl_by_name("Normal", true)
+    color_normal_nc = vim.api.nvim_get_hl_by_name("NormalNC", true)
+    color_winbar = vim.api.nvim_get_hl_by_name("WinBar", true)
+    color_winbar_nc = vim.api.nvim_get_hl_by_name("WinBarNC", true)
+
+    color_vertsplit = vim.api.nvim_get_hl_by_name("VertSplit", true)
+    color_vertsplit_nc = vim.api.nvim_get_hl_by_name("VertSplitNC", true)
+
+    vim.api.nvim_set_hl(wininactive, "Normal", { fg = color_normal_nc.foreground, bg = color_normal_nc.background })
+    vim.api.nvim_set_hl(wininactive, "NeoTreeNormal", { fg = color_normal_nc.foreground, bg = color_normal_nc.background })
+    vim.api.nvim_set_hl(wininactive, "WinBar", { fg = color_winbar_nc.foreground, bg = color_winbar_nc.background })
+    vim.api.nvim_set_hl(splitinactive, "VertSplit", { fg = color_vertsplit_nc.foreground, bg = color_vertsplit_nc.background })
+    vim.api.nvim_set_hl(splitinactive, "NeoTreeWinSeparator", { fg = color_vertsplit_nc.foreground, bg = color_vertsplit_nc.background })
+
+    vim.api.nvim_set_hl(winactive, "Normal", { fg = color_normal.foreground, bg = color_normal.background })
+    vim.api.nvim_set_hl(winactive, "NeoTreeNormal", { fg = color_normal.foreground, bg = color_normal.background })
+    vim.api.nvim_set_hl(winactive, "WinBar", { fg = color_winbar.foreground, bg = color_winbar.background })
+    vim.api.nvim_set_hl(splitactive, "VertSplit", { fg = color_vertsplit.foreground, bg = color_vertsplit.background })
+    vim.api.nvim_set_hl(splitactive, "NeoTreeWinSeparator", { fg = color_vertsplit.foreground, bg = color_vertsplit.background })
+  end
+
+  set_color_config()
  
   -- Neovim からフォーカスか外れた時に Normal の色を NormalNC にして
   -- フォーカスが戻った時に Normal に戻す
@@ -76,6 +97,34 @@ return function()
         vim.api.nvim_win_set_hl_ns(leftside, splitactive)
       end
     end
+  })
+  vim.api.nvim_create_autocmd({ "FocusLost" }, {
+    pattern = { "*" },
+    callback = function()
+      vim.api.nvim_set_hl(0, "Normal", { fg = color_normal_nc.foreground, bg = color_normal_nc.background })
+      vim.api.nvim_set_hl(0, "WinBar", { fg = color_winbar_nc.foreground, bg = color_winbar_nc.background })
+      vim.api.nvim_set_hl(0, "VertSplit", { fg = color_vertsplit_nc.foreground, bg = color_vertsplit_nc.background })
+      local leftside = tonumber(vim.api.nvim_command_output("echo win_getid(winnr('h'))"))
+      if leftside ~= vim.api.nvim_get_current_win() then
+        vim.api.nvim_win_set_hl_ns(leftside, splitinactive)
+      end
+    end
+  })
+  vim.api.nvim_create_autocmd({ "FocusGained" }, {
+    pattern = { "*" },
+    callback = function()
+      vim.api.nvim_set_hl(0, "Normal", { fg = color_normal.foreground, bg = color_normal.background })
+      vim.api.nvim_set_hl(0, "WinBar", { fg = color_winbar.foreground, bg = color_winbar.background })
+      vim.api.nvim_set_hl(0, "VertSplit", { fg = color_vertsplit.foreground, bg = color_vertsplit.background })
+      local leftside = tonumber(vim.api.nvim_command_output("echo win_getid(winnr('h'))"))
+      if leftside ~= vim.api.nvim_get_current_win() then
+        vim.api.nvim_win_set_hl_ns(leftside, splitactive)
+      end
+    end
+  })
+  vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+    pattern = { "*" },
+    callback = set_color_config
   })
   -- vim.api.nvim_create_autocmd({ "FocusLost" }, {
   --   pattern = { "*" },
