@@ -6,7 +6,7 @@ return {
   config = function()
     require("neogit").setup({
       -- Hides the hints at the top of the status buffer
-      disable_hint = false,
+      disable_hint = true,
       -- Disables changing the buffer highlights based on where the cursor is.
       disable_context_highlighting = false,
       -- Disables signs for sections/items/hunks
@@ -23,7 +23,7 @@ return {
       -- events.
       filewatcher = {
         interval = 1000,
-        enabled = true,
+        enabled = false,
       },
       -- Allows a different telescope sorter. Defaults to 'fuzzy_with_index_bias'. The example below will use the native fzf
       -- sorter instead. By default, this function returns `nil`.
@@ -199,7 +199,8 @@ return {
           ["m"] = "MergePopup",
           ["P"] = "PushPopup",
           ["c"] = "CommitPopup",
-          ["l"] = "LogPopup",
+          ["l"] = false,
+          ["L"] = "LogPopup",
           ["v"] = "RevertPopup",
           ["Z"] = "StashPopup",
           ["A"] = "CherryPickPopup",
