@@ -4,25 +4,21 @@
 SESSION_NAME=config
 
 # ワークスペースの数
-WORKSPACE_COUNT=5
+WORKSPACE_COUNT=2
 
 # ワークスペース(タブ)の名前
 WORKSPACE_NAME=(
-  neovim
-  yabai
-  alacritty
-  tmux
+  home
   dotfiles
 )
 
 # ワークスペースのパス
 WORKSPACE_PATH=(
-  ~/.config/nvim/
-  ~/.config/yabai/
-  ~/.config/alacritty/
-  ~/.config/tmux/
+  ~/
   ~/dotfiles/
 )
+
+alias tmux='tmux -u'
 
 # 同じレイアウトで複数のワークスペースを作成
 for ((I=1; I<=$WORKSPACE_COUNT; I++)); do
@@ -37,7 +33,7 @@ for ((I=1; I<=$WORKSPACE_COUNT; I++)); do
   # ウィンドウの名前を変更
   tmux rename-window "$WORKSPACE_NAME[$I]"
   # 縦 25% の位置で分割
-  tmux split-window -v -p 25 -c "#{pane_current_path}" 'NVIM_APPNAME=nvim-term nvim -u ~/.config/nvim-term/init.lua -c "ter" -c "vs" -c "ter"'
+  tmux split-window -v -l 16 -c "#{pane_current_path}" 'NVIM_APPNAME=nvim-term nvim -u ~/.config/nvim-term/init.lua -c "ter" -c "vs" -c "ter"'
   tmux set -p remain-on-exit on
   # メインのペインにフォーカスしてズーム
   tmux select-pane -t 0
