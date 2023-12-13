@@ -70,6 +70,10 @@
 !/Firefox/
 !/Firefox/**
 
+## Docker
+!/docker/
+!/docker/**
+
 .DS_Store
 !/.gitignore
 *node_modules/

@@ -1,0 +1,20 @@
+  version: "3"
+  services:
+    editor:
+      build: ./docker/editor
+      platform: linux/amd64
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        # - /home/mocaffy/docker-compose.yml:/home/mocaffy/docker-compose.yml
+        - /home/mocaffy/:/home/mocaffy/
+        - /home/mocaffy/.gitconfig:/etc/gitconfig
+        - /home/mocaffy/development/:/home/user/development/
+      command: /home/user/dotfiles/.bin/tmux-layout-setup.sh
+      tty: true
+    angular:
+      build: ./docker/angular
+      ports:
+        - "4200:4200"
+      volumes:
+        - /home/mocaffy/development/:/root/development/
+      tty: true
