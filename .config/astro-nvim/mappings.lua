@@ -4,7 +4,9 @@
 -- lower level configuration and more robust one. (which-key will
 -- automatically pick-up stored data by this setting.)
 
-local toggle_term_cmd = astronvim.toggle_term_cmd
+local utils = require "astronvim.utils"
+local toggle_term_cmd = utils.toggle_term_cmd
+
 
 return {
   -- first key is the mode

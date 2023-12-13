@@ -181,4 +181,19 @@ return function()
   })
 
   vim.keymap.set('n', '<Leader>bx', cleanbuffer, { silent = true, desc = 'Close unused buffers' })
+
+  if vim.env.TMUX then
+    vim.g.clipboard = {
+      name = 'tmux',
+      copy = {
+        ["+"] = {'tmux', 'load-buffer', '-w', '-'},
+        ["*"] = {'tmux', 'load-buffer', '-w', '-'},
+      },
+      paste = {
+        ["+"] = {'tmux', 'save-buffer', '-'},
+        ["*"] = {'tmux', 'save-buffer', '-'},
+      },
+      cache_enabled = false,
+    }
+  end
 end
