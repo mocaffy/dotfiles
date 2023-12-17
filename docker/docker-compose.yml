@@ -1,7 +1,7 @@
   version: "3"
   services:
     editor:
-      build: ./docker/editor
+      build: ./editor
       platform: linux/amd64
       volumes:
         - /var/run/docker.sock:/var/run/docker.sock
@@ -12,7 +12,7 @@
       command: /home/user/dotfiles/.bin/tmux-layout-setup.sh
       tty: true
     angular:
-      build: ./docker/angular
+      build: ./angular
       ports:
         - "4200:4200"
       volumes:
