@@ -30,6 +30,10 @@
 !/.config/lazygit/
 !/.config/lazygit/**
 
+### neovim
+!/.config/nvim/
+!/.config/nvim/**
+
 ### nvim-term
 !/.config/nvim-term/
 !/.config/nvim-term/**
