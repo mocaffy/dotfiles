@@ -17,28 +17,24 @@ vim.opt.cmdheight = 0
 vim.opt.clipboard = "unnamedplus"
 vim.opt.fillchars = {
   eob = " ",
-  vert = "▏"
-},
-
-vim.opt.fillchars:append("vert:▏")
+  vert = "│",
+}
 
 -- タイトルの変更を有効にする
-vim.opt.title = true
+vim.opt.title = false
+vim.cmd("set notitle")
 
 -- swapファイルを無効にする
 vim.opt.swapfile = false
 
 require("lazy").setup("plugins")
 
-local ok, _ = pcall(vim.cmd, 'colorscheme nordfox')
+local ok, _ = pcall(vim.cmd, "colorscheme nightfox")
 if not ok then
-  vim.cmd 'colorscheme default'
+  vim.cmd("colorscheme default")
 end
 
 require("utils").set_mappings(require("mappings"))
-
-
-
 
 vim.cmd([[
   augroup bigfiles
@@ -55,45 +51,47 @@ vim.cmd([[
     " Current file
     let file = expand("%")
     let result = system("tmux send-keys -t 0 ':e " . file . "' Enter")
-    
-    
+
+
     bp!
     bd! #
   endfunction
 ]])
 
-
-
-  local splitactive  = vim.api.nvim_create_namespace('splitactive')
-  local splitinactive  = vim.api.nvim_create_namespace('splitinactive')
-
-  -- Normal と NormalNC のハイライト設定を変数に代入
-  local color_vertsplit = vim.api.nvim_get_hl_by_name("VertSplit", true)
-  local color_vertsplit_nc = vim.api.nvim_get_hl_by_name("VertSplitNC", true)
-
-  vim.api.nvim_set_hl(splitinactive, "VertSplit", { fg = color_vertsplit_nc.foreground, bg = color_vertsplit_nc.background })
-  vim.api.nvim_set_hl(splitactive, "VertSplit", { fg = color_vertsplit.foreground, bg = color_vertsplit.background })
-
-  vim.api.nvim_create_autocmd({ "WinLeave" }, {
-    pattern = { "*" },
-    callback = function()
-      local leftside = tonumber(vim.api.nvim_command_output("echo win_getid(winnr('h'))"))
-      if leftside ~= vim.api.nvim_get_current_win() then
-        vim.api.nvim_win_set_hl_ns(leftside, splitinactive)
-      end
-    end
-  })
-  vim.api.nvim_create_autocmd({ "WinEnter", "WinNew" }, {
-    pattern = { "*" },
-    callback = function()
-      local leftside = tonumber(vim.api.nvim_command_output("echo win_getid(winnr('h'))"))
-      if leftside ~= vim.api.nvim_get_current_win() then
-        vim.api.nvim_win_set_hl_ns(leftside, splitactive)
-      end
-    end
-  })
+-- local splitactive = vim.api.nvim_create_namespace("splitactive")
+-- local splitinactive = vim.api.nvim_create_namespace("splitinactive")
+--
+-- -- Normal と NormalNC のハイライト設定を変数に代入
+-- local color_vertsplit = vim.api.nvim_get_hl_by_name("VertSplit", true)
+-- local color_vertsplit_nc = vim.api.nvim_get_hl_by_name("VertSplitNC", true)
+--
+-- vim.api.nvim_set_hl(
+-- 	splitinactive,
+-- 	"VertSplit",
+-- 	{ fg = color_vertsplit_nc.foreground, bg = color_vertsplit_nc.background }
+-- )
+-- vim.api.nvim_set_hl(splitactive, "VertSplit", { fg = color_vertsplit.foreground, bg = color_vertsplit.background })
+--
+-- vim.api.nvim_create_autocmd({ "WinLeave" }, {
+-- 	pattern = { "*" },
+-- 	callback = function()
+-- 		local leftside = tonumber(vim.api.nvim_command_output("echo win_getid(winnr('h'))"))
+-- 		if leftside ~= vim.api.nvim_get_current_win() then
+-- 			vim.api.nvim_win_set_hl_ns(leftside, splitinactive)
+-- 		end
+-- 	end,
+-- })
+-- vim.api.nvim_create_autocmd({ "WinEnter", "WinNew" }, {
+-- 	pattern = { "*" },
+-- 	callback = function()
+-- 		local leftside = tonumber(vim.api.nvim_command_output("echo win_getid(winnr('h'))"))
+-- 		if leftside ~= vim.api.nvim_get_current_win() then
+-- 			vim.api.nvim_win_set_hl_ns(leftside, splitactive)
+-- 		end
+-- 	end,
+-- })
 
 -- フォーカスがターミナルウィンドウから離れたときにノーマルモードに切り替える
-vim.cmd[[
+vim.cmd([[
   autocmd WinLeave,FocusLost * if &buftype == 'terminal' | stopinsert | endif
-]]
+]])

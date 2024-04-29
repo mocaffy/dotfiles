@@ -3,17 +3,14 @@ return {
   config = function()
     require("nightfox").setup({
       options = {
-        -- transparent = true,
-        terminal_colors = true,
+        transparent = true,
+        -- terminal_colors = true,
       },
       groups = {
-        all = {
-          VertSplit = { fg = "bg0", bg = "bg1" },
-          VertSplitNC = { fg = "bg0", bg = "#2A2F3B" },
-          NormalNC = { fg = "fg1", bg = "#2a2f3b" },
-          WinBarNC = { fg = "fg1", bg = "#2A2F3B" },
+        nightfox = {
+          WinSeparator = { fg = "bg2" },
+          WinBarNC = { fg = "fg1" },
           TermCursor = { bg = "yellow" },
-          -- TermCursorNC = { bg = "bg2" }
         },
       },
     })

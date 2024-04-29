@@ -11,23 +11,6 @@ return {
     end,
   },
 
-  -- 行単位でコミットできるプラグイン
-  {
-    "TimUntersberger/neogit",
-    dependencies = 'nvim-lua/plenary.nvim',
-    config = function()
-      require("neogit").setup({
-        auto_refresh = true,
-      })
-      vim.cmd([[
-        augroup DefaultRefreshEvents
-          au!
-          au FocusGained * lua require('neogit').dispatch_refresh(true)
-        augroup END
-      ]])
-    end,
-  },
-
   {
     "mrjones2014/smart-splits.nvim",
     opts = { ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" }, ignored_buftypes = { "nofile" } },
