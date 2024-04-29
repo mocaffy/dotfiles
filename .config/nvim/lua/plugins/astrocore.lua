@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -32,11 +30,29 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
+        fillchars = {
+          eob = " ",
+          vert = "▏",
+        },
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
+      },
+    },
+    -- Configuration table of session options for AstroNvim's session management powered by Resession
+    sessions = {
+      -- Configure auto saving
+      autosave = {
+        last = true, -- auto save last session
+        cwd = true, -- auto save session for each working directory
+      },
+      -- Patterns to ignore when saving sessions
+      ignore = {
+        dirs = {}, -- working directories to ignore sessions in
+        filetypes = { "gitcommit", "gitrebase" }, -- filetypes to ignore sessions
+        buftypes = {}, -- buffer types to ignore sessions
       },
     },
     -- Mappings can be configured through AstroCore as well.
@@ -62,8 +78,38 @@ return {
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         ["<Leader>b"] = { desc = "Buffers" },
-        -- quick save
-        -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+        ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+        ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
+        ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
+        ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
+
+        -- ウィンドウの拡大
+        ["<Leader>z"] = { "<Cmd>WindowsMaximize<CR>", desc = "Maximize window" },
+
+        -- Neogit を開く
+        ["<Leader>gn"] = { function() require("neogit").open { kind = "vsplit" } end, desc = "Neogit" },
+
+        -- Tmux
+        ["<Leader>tt"] = { desc = "Tmux" },
+        ["<Leader>ttks"] = { "<Cmd>call system('tmux kill-session')<CR>", desc = "Kill Session" },
+        ["<Leader>ttkw"] = { "<Cmd>call system('tmux kill-window')<CR>", desc = "Kill Window" },
+        ["<Leader>ttd"] = { "<Cmd>call system('tmux detach')<CR>", desc = "Detach Session" },
+        ["<Leader>ttr"] = { "<Cmd>call system('tmux respawn-pane -k')<CR>", desc = "Restart Neovim" },
+        ["<Leader>ttz"] = { "<Cmd>call system('tmux resize-pane -Z')<CR>", desc = "Toggle Maximize" },
+        ["<leader>ttn"] = {
+          function() require("astrocore").toggle_term_cmd "~/dotfiles/.bin/peco-src.sh" end,
+          desc = "Open Workspace",
+        },
+
+        -- nnn
+        -- ["<leader>E"] = { function() require("astrocore").toggle_term_cmd " export NNN_PLUG='p:preview-tui' && nnn -a" end, desc = "nnn" },
+        ["<Leader>E"] = { "<Cmd>call system('tmux splitp -h \"export NNN_PLUG=p:preview-tui && nnn -aP p\"')<CR>", desc = "Toggle Maximize" },
+
+        -- git
+        ["<leader>gC"] = { function() require("astrocore").toggle_term_cmd "gitmoji -c" end, desc = "Gitmoji Commit" },
+
+        -- Telescope
+        ["<Leader>fr"] = { "<Cmd>Telescope frecency<CR>", desc = "Telescope Frecency" },
       },
       t = {
         -- setting a mapping to false will disable it
