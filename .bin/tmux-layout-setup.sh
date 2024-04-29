@@ -33,7 +33,7 @@ for ((I=1; I<=$WORKSPACE_COUNT; I++)); do
   # ウィンドウの名前を変更
   tmux rename-window "$WORKSPACE_NAME[$I]"
   # 縦 25% の位置で分割
-  tmux split-window -v -l 16 -c "#{pane_current_path}" 'NVIM_APPNAME=nvim-term nvim -u ~/.config/nvim-term/init.lua -c "ter" -c "vs" -c "ter"'
+  tmux split-window -v -l 16 -c "#{pane_current_path}" "NVIM_APPNAME=nvim-term nvim -u ~/.config/nvim-term/init.lua -c 'ter HISTFILE=~/.workspace/history/$I-3 zsh' -c 'vs' -c 'ter HISTFILE=~/.workspace/history/$I-2 zsh' -c 'vs' -c 'ter HISTFILE=~/.workspace/history/$I-1 zsh'"
   tmux set -p remain-on-exit on
   # メインのペインにフォーカスしてズーム
   tmux select-pane -t 0
@@ -41,7 +41,7 @@ for ((I=1; I<=$WORKSPACE_COUNT; I++)); do
 done
 
 # 最初のウィンドウにフォーカスする
-tmux select-window -t 0
+# tmux select-window -t 0
 
 # 現在のターミナルをセッションにアタッチする
 tmux attach -t $SESSION_NAME
