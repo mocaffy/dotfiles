@@ -60,6 +60,7 @@ return {
     mappings = {
       -- first key is the mode
       n = {
+        ["<Leader>c"] = false,
         -- second key is the lefthand side of the map
 
         -- navigate buffer tabs with `H` and `L`
@@ -103,7 +104,10 @@ return {
 
         -- nnn
         -- ["<leader>E"] = { function() require("astrocore").toggle_term_cmd " export NNN_PLUG='p:preview-tui' && nnn -a" end, desc = "nnn" },
-        ["<Leader>E"] = { "<Cmd>call system('tmux splitp -h \"export NNN_PLUG=p:preview-tui && nnn -aP p\"')<CR>", desc = "Toggle Maximize" },
+        ["<Leader>E"] = {
+          "<Cmd>call system('tmux splitp -h \"export NNN_PLUG=p:preview-tui && nnn -aP p\"')<CR>",
+          desc = "Toggle Maximize",
+        },
 
         -- git
         ["<leader>gC"] = { function() require("astrocore").toggle_term_cmd "gitmoji -c" end, desc = "Gitmoji Commit" },
