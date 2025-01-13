@@ -49,7 +49,9 @@ return {
         hide_dotfiles = false,
         hide_gitignored = true,
       },
-      follow_current_file = true,
+      follow_current_file = {
+        enable = true,
+      },
       hijack_netrw_behavior = "open_current",
       use_libuv_file_watcher = true,
       window = {
