@@ -20,4 +20,5 @@ vim.cmd [[
   au WinLeave * setlocal nocursorline
 ]]
 
+require("color")
 require("win_separator").setup()
