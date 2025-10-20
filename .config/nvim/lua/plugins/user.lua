@@ -35,11 +35,12 @@ return {
   },
 
   -- よく開くファイルを表示
-  {
-    "nvim-telescope/telescope-frecency.nvim",
-    requires = { "kkharji/sqlite.lua" },
-    config = function()
-      require "telescope".load_extension("frecency")
-    end,
-  },
+  -- AstroNvim v5 で telescope が採用されなくなったのでコメントアウト
+  -- {
+  --   "nvim-telescope/telescope-frecency.nvim",
+  --   requires = { "kkharji/sqlite.lua" },
+  --   config = function()
+  --     require "telescope".load_extension("frecency")
+  --   end,
+  -- },
 }
