@@ -1,0 +1,9 @@
+[tools]
+ghq = "latest"
+lazygit = "latest"
+neovim = "latest"
+node = "22"
+peco = "latest"
+python = "latest"
+starship = "latest"
+tmux = "latest"

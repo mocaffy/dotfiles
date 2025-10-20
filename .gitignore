@@ -66,6 +66,10 @@
 !/.config/zsh/
 !/.config/zsh/**
 
+### mise
+!/.config/mise/
+!/.config/mise/**
+
 ### カラーテーマ
 !/.config/colors/
 !/.config/colors/**
