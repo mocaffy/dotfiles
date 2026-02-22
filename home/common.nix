@@ -6,5 +6,8 @@
     ghq
     lazygit
     peco
+    neovim
+    starship
+    tmux
   ];
 }
