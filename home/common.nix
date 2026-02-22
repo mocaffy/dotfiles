@@ -26,6 +26,13 @@
     '';
   };
 
+  programs.git = {
+    enable = true;
+    settings = {
+      ghq.root = "~/development";
+    };
+  };
+
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
