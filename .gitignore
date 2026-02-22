@@ -5,6 +5,14 @@
 # README.md
 !/README.md
 
+## nix
+!/flake.nix
+!/flake.lock
+!/home/
+!/home/**
+!/hosts/
+!/hosts/**
+
 ## bin
 !/.bin/
 !/.bin/**
