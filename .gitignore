@@ -17,9 +17,6 @@
 !/.bin/
 !/.bin/**
 
-## config
-!/.config/
-
 ### alacritty
 !/.config/alacritty/
 !/.config/alacritty/**
@@ -50,10 +47,6 @@
 !/.config/skhd/
 !/.config/skhd/.skhdrc
 
-### starship
-!/.config/starship/
-!/.config/starship/starship.toml
-
 ### triactyl
 !/.config/tridactyl/
 !/.config/tridactyl/**
@@ -69,10 +62,6 @@
 ### yabai
 !/.config/yabai/
 !/.config/yabai/.yabairc
-
-### zsh
-!/.config/zsh/
-!/.config/zsh/**
 
 ### mise
 !/.config/mise/
