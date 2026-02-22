@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ pkgs, ... }: {
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
@@ -12,7 +12,6 @@
 
   home.sessionVariables = {
     XDG_CONFIG_HOME = "$HOME/.config";
-    STARSHIP_CONFIG = lib.mkForce "$HOME/.config/starship/starship.toml";
   };
 
   programs.zsh = {
@@ -30,5 +29,8 @@
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
+    settings = {
+      add_newline = false;
+    };
   };
 }
