@@ -43,9 +43,9 @@ gui:
   splitDiff: 'auto' # one of 'auto' | 'always'
   skipRewordInEditorWarning: false # for skipping the confirmation before launching the reword editor
 git:
-  paging:
-    colorArg: always
-    useConfig: false
+  pagers:
+    - colorArg: always
+      useConfig: false
   commit:
     signOff: false
     verbose: default # one of 'default' | 'always' | 'never'
@@ -68,11 +68,12 @@ git:
   autoFetch: true
   autoRefresh: true
   branchLogCmd: 'git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --'
-  allBranchesLogCmd: 'git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium'
   overrideGpg: false # prevents lazygit from spawning a separate process when using GPG
   disableForcePushing: false
   parseEmoji: true
   diffContextSize: 3 # how many lines of context are shown around a change in diffs
+  allBranchesLogCmds:
+    - git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
 os:
   editCommand: '' # see 'Configuring File Editing' section
   editCommandTemplate: ''
@@ -170,7 +171,7 @@ keybinding:
     viewResetOptions: 'D'
     fetch: 'f'
     toggleTreeView: '`'
-    openMergeTool: 'M'
+    openMergeOptions: 'M'
     openStatusFilter: '<c-b>'
   branches:
     createPullRequest: 'o'
