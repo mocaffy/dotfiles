@@ -4,16 +4,18 @@
 SESSION_NAME=config
 
 # ワークスペースの数
-WORKSPACE_COUNT=2
+WORKSPACE_COUNT=3
 
 # ワークスペース(タブ)の名前
 WORKSPACE_NAME=(
-  home
+  win
+  wsl
   dotfiles
 )
 
 # ワークスペースのパス
 WORKSPACE_PATH=(
+  /mnt/c/Users/mocaffy/
   ~/
   ~/dotfiles/
 )

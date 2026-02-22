@@ -1,28 +1,16 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-export XDG_CONFIG_HOME="$HOME/.config"
-
 set -o ignoreeof  # Same as setting IGNOREEOF=10
 
-typeset -U path PATH
-path=(
-  /opt/homebrew/bin(N-/)
-  /opt/homebrew/sbin(N-/)
-  /usr/bin
-  /usr/sbin
-  /bin
-  /sbin
-  /usr/local/bin(N-/)
-  /usr/local/sbin(N-/)
-  /Library/Apple/usr/bin
-)
+setopt append_history
+setopt inc_append_history
+setopt share_history
 
-eval "$(starship init zsh)"
+export XDG_CONFIG_HOME="$HOME/.config"
+
+eval "$(/home/mocaffy/.local/bin/mise activate zsh)"
+
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
+eval "$(starship init zsh)"
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+export SAVEHIST=1000
 
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
+# [[ -f ~/.inshellisense/zsh/init.zsh ]] && source ~/.inshellisense/zsh/init.zsh
