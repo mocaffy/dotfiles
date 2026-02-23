@@ -8,6 +8,7 @@
     peco
     neovim
     tmux
+    gh
   ];
 
   home.sessionVariables = {
