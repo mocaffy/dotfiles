@@ -71,6 +71,10 @@
 !/.config/colors/
 !/.config/colors/**
 
+## windows
+!/windows/
+!/windows/**
+
 ## Firefox
 !/Firefox/
 !/Firefox/**

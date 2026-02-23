@@ -1,0 +1,33 @@
+{
+  "buckets": [
+    {
+      "Name": "main",
+      "Source": "https://github.com/ScoopInstaller/Main"
+    },
+    {
+      "Name": "extras",
+      "Source": "https://github.com/ScoopInstaller/Extras"
+    },
+    {
+      "Name": "versions",
+      "Source": "https://github.com/ScoopInstaller/Versions"
+    },
+    {
+      "Name": "nonportable",
+      "Source": "https://github.com/ScoopInstaller/Nonportable"
+    }
+  ],
+  "apps": [
+    { "Source": "main", "Name": "7zip", "Version": "24.09", "Info": "" },
+    { "Source": "extras", "Name": "alacritty", "Version": "0.16.1", "Info": "" },
+    { "Source": "main", "Name": "git", "Version": "2.49.0", "Info": "" },
+    { "Source": "extras", "Name": "komorebi", "Version": "0.1.40", "Info": "" },
+    { "Source": "main", "Name": "mise", "Version": "2026.2.19", "Info": "" },
+    { "Source": "versions", "Name": "nodejs22", "Version": "22.15.0", "Info": "" },
+    { "Source": "extras", "Name": "powertoys", "Version": "0.90.1", "Info": "" },
+    { "Source": "extras", "Name": "whkd", "Version": "0.2.10", "Info": "" },
+    { "Source": "main", "Name": "win32yank", "Version": "0.1.1", "Info": "" },
+    { "Source": "extras", "Name": "yasb", "Version": "1.8.9", "Info": "" },
+    { "Source": "extras", "Name": "nefcon", "Version": "1.12.0", "Info": "Global install" }
+  ]
+}
