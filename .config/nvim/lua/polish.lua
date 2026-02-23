@@ -44,5 +44,13 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
+-- ClaudeCode のターミナルでは which-key を無効化 (スペースキーを入力できるように)
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "*claude*",
+  callback = function()
+    vim.b.which_key_disable = true
+  end,
+})
+
 require("color")
 require("win_separator").setup()
