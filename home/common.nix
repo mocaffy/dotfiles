@@ -1,0 +1,44 @@
+{ pkgs, ... }: {
+  home.stateVersion = "24.11";
+
+  home.packages = with pkgs; [
+    ripgrep
+    ghq
+    lazygit
+    peco
+    neovim
+    tmux
+    gh
+  ];
+
+  home.sessionVariables = {
+    XDG_CONFIG_HOME = "$HOME/.config";
+  };
+
+  programs.zsh = {
+    enable = true;
+    history = {
+      size = 1000;
+      append = true;
+      share = true;
+    };
+    initContent = ''
+      set -o ignoreeof
+    '';
+  };
+
+  programs.git = {
+    enable = true;
+    settings = {
+      ghq.root = "~/development";
+    };
+  };
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      add_newline = false;
+    };
+  };
+}

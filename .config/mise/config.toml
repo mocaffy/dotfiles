@@ -1,9 +1,12 @@
 [tools]
-ghq = "latest"
-lazygit = "latest"
-neovim = "latest"
+# Nix で管理するものを削除
+# ghq = "latest"
+# lazygit = "latest"
+# neovim = "latest"
+# peco = "latest"
+# starship = "latest"
+# tmux = "latest"
+
+# ランタイム（プロジェクトごとのバージョン管理のため mise で継続）
 node = "22"
-peco = "latest"
 python = "latest"
-starship = "latest"
-tmux = "latest"

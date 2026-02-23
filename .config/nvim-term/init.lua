@@ -14,6 +14,23 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.opt.laststatus = 0
 vim.opt.cmdheight = 0
+
+-- WSL クリップボード設定
+if vim.fn.has "wsl" == 1 then
+  vim.g.clipboard = {
+    name = "win32yank",
+    copy = {
+      ["+"] = "win32yank.exe -i --crlf",
+      ["*"] = "win32yank.exe -i --crlf",
+    },
+    paste = {
+      ["+"] = "win32yank.exe -o --lf",
+      ["*"] = "win32yank.exe -o --lf",
+    },
+    cache_enabled = 0,
+  }
+end
+
 vim.opt.clipboard = "unnamedplus"
 vim.opt.fillchars = {
   eob = " ",
