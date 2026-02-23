@@ -36,5 +36,13 @@ vim.cmd [[
   au WinLeave * setlocal nocursorline
 ]]
 
+-- ターミナルバッファでは gj/gk マッピングを無効化
+vim.api.nvim_create_autocmd("TermOpen", {
+  callback = function()
+    vim.keymap.set("n", "j", "j", { buffer = true })
+    vim.keymap.set("n", "k", "k", { buffer = true })
+  end,
+})
+
 require("color")
 require("win_separator").setup()
