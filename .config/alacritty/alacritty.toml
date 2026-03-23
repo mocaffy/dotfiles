@@ -3,10 +3,7 @@
 # import = []
 
 # The path of your favorite shell
-[shell]
-# Example
-program = "wsl"
-# args = ["-l"]
+# (configured under [terminal] section below)
 
 # Working directory
 # working_directory = "None"  # Default: "None"
@@ -248,6 +245,9 @@ thickness = 0.15  # Default: 0.15
 
 # Controls the OSC 52 behavior for clipboard interactions
 osc52 = "OnlyCopy"  # Default: "OnlyCopy"
+
+[terminal.shell]
+program = "/usr/bin/zsh"
 
 # ====================== MOUSE ======================
 [mouse]
