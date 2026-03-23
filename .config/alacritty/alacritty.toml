@@ -1,5 +1,5 @@
 # ====================== GENERAL ======================
-# Import platform-specific configuration
+[general]
 import = ["~/.config/alacritty-local.toml"]
 
 # Working directory
@@ -26,8 +26,7 @@ dimensions = { columns = 0, lines = 0 }  # Default: columns = 0, lines = 0
 # Window startup position
 position = "None"  # Default: "None"
 
-# Blank space added around the window in pixels
-padding = { x = 0, y = 0 }  # Default: x = 0, y = 0
+# Blank space added around the window in pixels: configured in platform-specific local.toml
 
 # Spread additional padding evenly around the terminal content
 dynamic_padding = true  # Default: false

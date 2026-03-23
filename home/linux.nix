@@ -4,9 +4,13 @@
   home.packages = with pkgs; [
     mise
     nerd-fonts.fira-code
+    noto-fonts-cjk-sans
   ];
 
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts.sansSerif = [ "Noto Sans CJK JP" "sans-serif" ];
+  };
 
   xdg.configFile."alacritty-local.toml".source = ../.config/alacritty/linux.toml;
 
