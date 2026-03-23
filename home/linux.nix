@@ -8,6 +8,8 @@
 
   fonts.fontconfig.enable = true;
 
+  xdg.configFile."alacritty-local.toml".source = ../.config/alacritty/linux.toml;
+
   programs.zsh.initContent = ''
     eval "$(mise activate zsh)"
   '';

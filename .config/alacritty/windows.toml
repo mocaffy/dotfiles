@@ -1,0 +1,8 @@
+[terminal.shell]
+program = "wsl"
+
+[font]
+size = 8.4
+
+[window]
+padding = { x = 0, y = 0 }

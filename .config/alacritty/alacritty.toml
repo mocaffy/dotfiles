@@ -1,9 +1,6 @@
 # ====================== GENERAL ======================
-# Import additional configuration files
-# import = []
-
-# The path of your favorite shell
-# (configured under [terminal] section below)
+# Import platform-specific configuration
+import = ["~/.config/alacritty-local.toml"]
 
 # Working directory
 # working_directory = "None"  # Default: "None"
@@ -90,8 +87,7 @@ italic = { style = "Italic" }  # Inherits family from normal, Default style: Ita
 # Bold Italic font style
 bold_italic = { style = "Bold Italic" }  # Inherits family from normal, Default style: Bold Italic
 
-# Font size in points
-size = 8.4  # Default: 11.25
+# Font size in points: configured in platform-specific local.toml
 
 # Offset is extra space around each character
 offset = { x = 0, y = 0 }  # Default: x = 0, y = 0
@@ -245,9 +241,6 @@ thickness = 0.15  # Default: 0.15
 
 # Controls the OSC 52 behavior for clipboard interactions
 osc52 = "OnlyCopy"  # Default: "OnlyCopy"
-
-[terminal.shell]
-program = "/usr/bin/zsh"
 
 # ====================== MOUSE ======================
 [mouse]
