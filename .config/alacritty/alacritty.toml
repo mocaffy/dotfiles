@@ -35,7 +35,7 @@ dynamic_padding = true  # Default: false
 decorations = "None"  # Default: "Full"
 
 # Opacity
-opacity = 0.69 # Default: 1.0
+opacity = 0 # Default: 1.0
 
 # Request compositor to blur content behind transparent windows.
 blur = false  # Default: false
@@ -117,7 +117,7 @@ bright_foreground = "None"  # Default
 # Cursor colors
 [colors.cursor]
 text = "#ffffff"
-cursor = "#ff00ff"
+cursor = "#dd6666"
 
 # Vi mode cursor colors
 [colors.vi_mode_cursor]
