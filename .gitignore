@@ -13,9 +13,9 @@
 !/hosts/
 !/hosts/**
 
-## bin
-!/.bin/
-!/.bin/**
+## scripts
+!/scripts/
+!/scripts/**
 
 ### alacritty
 !/.config/alacritty/

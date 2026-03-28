@@ -99,7 +99,7 @@ return {
         ["<Leader>ttr"] = { "<Cmd>call system('tmux respawn-pane -k')<CR>", desc = "Restart Neovim" },
         ["<Leader>ttz"] = { "<Cmd>call system('tmux resize-pane -Z')<CR>", desc = "Toggle Maximize" },
         ["<leader>ttn"] = {
-          function() require("astrocore").toggle_term_cmd "~/dotfiles/.bin/peco-src.sh" end,
+          function() require("astrocore").toggle_term_cmd "~/dotfiles/scripts/peco-src.sh" end,
           desc = "Open Workspace",
         },
 

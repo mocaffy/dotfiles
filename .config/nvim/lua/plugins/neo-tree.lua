@@ -67,7 +67,7 @@ return {
         --   local path = state.tree:get_node():get_id()
         --   print(path)
         --   -- TODO: just use vim.ui.open when dropping support for Neovim <0.10
-        --   vim.fn.jobstart({ "zsh", "-c", "~/dotfiles/.bin/open " .. path }, { detach = true })
+        --   vim.fn.jobstart({ "zsh", "-c", "~/dotfiles/scripts/open " .. path }, { detach = true })
         -- end,
         -- open_extended = function(state)
         --   local path = state.tree:get_node():get_id()
