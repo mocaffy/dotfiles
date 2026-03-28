@@ -35,7 +35,7 @@ for ((I=1; I<=$WORKSPACE_COUNT; I++)); do
   fi
   # ウィンドウの名前を変更
   tmux rename-window "$WORKSPACE_NAME[$I]"
-  setup_window_panes
+  setup_window_panes $WORKSPACE_PATH[$I]
 done
 
 # 現在のターミナルをセッションにアタッチする
