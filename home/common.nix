@@ -9,11 +9,16 @@
     neovim
     tmux
     gh
+    python3
   ];
 
   home.sessionVariables = {
     XDG_CONFIG_HOME = "$HOME/.config";
   };
+
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
 
   programs.home-manager.enable = true;
 
@@ -29,6 +34,7 @@
     };
     initContent = ''
       set -o ignoreeof
+      export PATH="$HOME/.local/bin:$PATH"
     '';
   };
 

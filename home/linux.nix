@@ -22,6 +22,10 @@
     ${pkgs.mise}/bin/mise trust --all
   '';
 
+  home.activation.miseInstall = lib.hm.dag.entryAfter [ "miseTrust" ] ''
+    ${pkgs.mise}/bin/mise install
+  '';
+
   home.activation.tpmInstall = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     _cloneIfMissing() {
       local repo="$1" dest="$2"
