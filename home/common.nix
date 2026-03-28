@@ -49,7 +49,6 @@
 
   xdg.configFile = {
     "nvim".source = ../.config/nvim;
-    "nvim-term".source = ../.config/nvim-term;
     "tmux".source = ../.config/tmux;
     "lazygit".source = ../.config/lazygit;
     "mise".source = ../.config/mise;
