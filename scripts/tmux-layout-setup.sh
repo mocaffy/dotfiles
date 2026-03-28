@@ -5,22 +5,19 @@ source "$(dirname $0)/tmux-window-layout-lib.sh"
 # セッションの名前
 SESSION_NAME=config
 
-# ワークスペースの数
-WORKSPACE_COUNT=3
+# ホストに応じたワークスペース定義
+if [[ -n "$WSL_DISTRO_NAME" ]]; then
+  WORKSPACE_NAME=(win wsl dotfiles)
+  WORKSPACE_PATH=(/mnt/c/Users/mocaffy/ ~/ ~/dotfiles/)
+elif [[ "$(uname -s)" = "Darwin" ]]; then
+  WORKSPACE_NAME=(home dotfiles)
+  WORKSPACE_PATH=(~/ ~/dotfiles/)
+else
+  WORKSPACE_NAME=(home dotfiles)
+  WORKSPACE_PATH=(~/ ~/dotfiles/)
+fi
 
-# ワークスペース(タブ)の名前
-WORKSPACE_NAME=(
-  win
-  wsl
-  dotfiles
-)
-
-# ワークスペースのパス
-WORKSPACE_PATH=(
-  /mnt/c/Users/mocaffy/
-  ~/
-  ~/dotfiles/
-)
+WORKSPACE_COUNT=${#WORKSPACE_NAME}
 
 alias tmux='tmux -u'
 
