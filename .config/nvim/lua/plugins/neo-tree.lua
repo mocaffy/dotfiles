@@ -10,8 +10,8 @@ return {
         H = "prev_source",
         L = "next_source",
         ["<Leader>as"] = function(state)
-          local path = state.tree:get_node():get_id():gsub(vim.fn.expand("$HOME"), "~")
-          vim.fn.system({ os.getenv("HOME") .. "/dotfiles/scripts/send-to-claude.sh", path })
+          local path = vim.fn.fnamemodify(state.tree:get_node():get_id(), ":.")
+          vim.fn.system({ os.getenv("HOME") .. "/dotfiles/scripts/send-to-claude.sh", "-f", "@" .. path })
         end,
       },
     },

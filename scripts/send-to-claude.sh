@@ -1,14 +1,19 @@
 #!/bin/bash
 # Claude ペインにテキストを送信する
-# Usage: send-to-claude.sh [-e] [text]
+# Usage: send-to-claude.sh [-e] [-f] [text]
 #   -e: Enter を送信する（デフォルト: なし）
+#   -f: 送信後に Claude ペインにフォーカスする
 #   引数なし: stdin からテキストを読む（コピーモード用）
 
 SEND_ENTER=false
-if [ "$1" = "-e" ]; then
-  SEND_ENTER=true
-  shift
-fi
+FOCUS=false
+while true; do
+  case "$1" in
+    -e) SEND_ENTER=true; shift ;;
+    -f) FOCUS=true; shift ;;
+    *) break ;;
+  esac
+done
 
 if [ $# -gt 0 ]; then
   TEXT="$*"
@@ -42,5 +47,9 @@ if [ $# -gt 0 ]; then
 else
   printf '%s' "$TEXT" | tmux load-buffer -
   tmux paste-buffer -p -t "$CLAUDE_PANE"
+  FOCUS=true
+fi
+
+if $FOCUS; then
   tmux select-pane -t "$CLAUDE_PANE"
 fi
