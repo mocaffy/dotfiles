@@ -55,6 +55,10 @@
 !/.config/vifm/
 !/.config/vifm/vifmrc
 
+### keyd
+!/.config/keyd/
+!/.config/keyd/**
+
 ### tmux
 !/.config/tmux/
 !/.config/tmux/tmux.conf

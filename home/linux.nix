@@ -26,6 +26,17 @@
     ${pkgs.mise}/bin/mise install
   '';
 
+  dconf.settings = {
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      name = "Color Picker";
+      command = "zenity --color-selection --show-palette";
+      binding = "<Super><Shift>p";
+    };
+  };
+
   home.activation.tpmInstall = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     _cloneIfMissing() {
       local repo="$1" dest="$2"
