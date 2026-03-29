@@ -5,8 +5,10 @@ return {
       v = {
         ["<Leader>as"] = {
           function()
-            local s = vim.fn.line("'<")
-            local e = vim.fn.line("'>")
+            local vstart = vim.fn.getpos("v")
+            local vcursor = vim.fn.getpos(".")
+            local s = math.min(vstart[2], vcursor[2])
+            local e = math.max(vstart[2], vcursor[2])
             local path = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
             local ref = "@" .. path .. ":" .. s .. "-" .. e
             vim.fn.system({ os.getenv("HOME") .. "/dotfiles/scripts/send-to-claude.sh", "-f", ref })
