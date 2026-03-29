@@ -71,6 +71,7 @@
     settings = {
       ghq.root = "~/development";
     };
+    signing.format = "openpgp";
   };
 
   programs.starship = {
