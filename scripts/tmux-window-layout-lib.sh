@@ -11,8 +11,8 @@ setup_window_panes() {
   # pane 0: nvim（初期ペイン）
   tmux set -p remain-on-exit on
 
-  # 右側を横分割（30%）してclaudeを起動
-  tmux split-window -h -p 30 -c "#{pane_current_path}" "zsh -ic 'claude'"
+  # 右側を横分割（33%）してclaudeを起動
+  tmux split-window -h -p 33 -c "#{pane_current_path}" "zsh -ic 'claude'"
   tmux set -p remain-on-exit on
 
   # 右側を縦分割してnodeを下に起動
