@@ -35,6 +35,7 @@
     };
     autosuggestion.enable = true;
     initContent = ''
+      unsetopt PROMPT_SP
       set -o ignoreeof
       export PATH="$HOME/.local/bin:$PATH"
       [[ -n "$HISTFILE_OVERRIDE" ]] && HISTFILE="$HISTFILE_OVERRIDE"
