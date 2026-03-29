@@ -1,7 +1,12 @@
 #!/bin/bash
-# コピーモードで選択したテキストを Claude ペインに送信する
+# Claude ペインにテキストを送信する
+# 引数があればその文字列を、なければ stdin を使う
 
-TEXT=$(cat)
+if [ $# -gt 0 ]; then
+  TEXT="$*"
+else
+  TEXT=$(cat)
+fi
 
 if [ -z "$TEXT" ]; then
   exit 0
@@ -20,6 +25,10 @@ if [ -z "$CLAUDE_PANE" ]; then
   exit 1
 fi
 
-printf '%s' "$TEXT" | tmux load-buffer -
-tmux paste-buffer -p -t "$CLAUDE_PANE"
+if [ $# -gt 0 ]; then
+  tmux send-keys -t "$CLAUDE_PANE" "$TEXT" Enter
+else
+  printf '%s' "$TEXT" | tmux load-buffer -
+  tmux paste-buffer -p -t "$CLAUDE_PANE"
+fi
 tmux select-pane -t "$CLAUDE_PANE"
