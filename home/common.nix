@@ -31,6 +31,7 @@
     };
     shellAliases = {
       hms = "home-manager switch --flake ~/dotfiles#mocaffy@$(hostname)";
+      ws = "~/dotfiles/scripts/tmux-layout-setup.sh";
     };
     autosuggestion.enable = true;
     initContent = ''
