@@ -53,7 +53,7 @@ function _peco_wt() {
   if [[ "$selected" == "[OPEN]"* ]]; then
     local worktree_dir=$(echo "$selected" | sed 's/^\[OPEN] //' | sed 's/ (.*$//')
     if [ -d "$worktree_dir" ]; then
-      ~/dotfiles/.bin/new-window.sh "$worktree_dir"
+      ~/dotfiles/scripts/new-window.sh "$worktree_dir"
     fi
     return 0
   fi
@@ -111,7 +111,7 @@ function _peco_wt() {
   fi
 
   # new-window.sh を呼び出し
-  ~/dotfiles/.bin/new-window.sh "$worktree_dir"
+  ~/dotfiles/scripts/new-window.sh "$worktree_dir"
 }
 
 _peco_wt
