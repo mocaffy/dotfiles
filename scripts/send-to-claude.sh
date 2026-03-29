@@ -1,6 +1,14 @@
 #!/bin/bash
 # Claude ペインにテキストを送信する
-# 引数があればその文字列を、なければ stdin を使う
+# Usage: send-to-claude.sh [-e] [text]
+#   -e: Enter を送信する（デフォルト: なし）
+#   引数なし: stdin からテキストを読む（コピーモード用）
+
+SEND_ENTER=false
+if [ "$1" = "-e" ]; then
+  SEND_ENTER=true
+  shift
+fi
 
 if [ $# -gt 0 ]; then
   TEXT="$*"
@@ -26,7 +34,11 @@ if [ -z "$CLAUDE_PANE" ]; then
 fi
 
 if [ $# -gt 0 ]; then
-  tmux send-keys -t "$CLAUDE_PANE" "$TEXT" Enter
+  if $SEND_ENTER; then
+    tmux send-keys -t "$CLAUDE_PANE" "$TEXT" Enter
+  else
+    tmux send-keys -t "$CLAUDE_PANE" "$TEXT"
+  fi
 else
   printf '%s' "$TEXT" | tmux load-buffer -
   tmux paste-buffer -p -t "$CLAUDE_PANE"
