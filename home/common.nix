@@ -37,6 +37,23 @@
       set -o ignoreeof
       export PATH="$HOME/.local/bin:$PATH"
       [[ -n "$HISTFILE_OVERRIDE" ]] && HISTFILE="$HISTFILE_OVERRIDE"
+
+      # fzf の Ctrl+R で ~/.workspace/history/ 配下の全履歴をマージして検索
+      fzf-history-widget() {
+        local selected
+        setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2>/dev/null
+        selected=$(
+          { cat ~/.zsh_history ~/.workspace/history/* "$HISTFILE" 2>/dev/null; } \
+            | awk '!seen[$0]++' \
+            | fzf --tac --no-sort --query "$LBUFFER" --scheme=history
+        )
+        if [[ -n "$selected" ]]; then
+          LBUFFER=$selected
+        fi
+        zle reset-prompt
+      }
+      zle -N fzf-history-widget
+      bindkey '^R' fzf-history-widget
     '';
   };
 
