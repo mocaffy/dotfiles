@@ -30,5 +30,5 @@ if [ $# -gt 0 ]; then
 else
   printf '%s' "$TEXT" | tmux load-buffer -
   tmux paste-buffer -p -t "$CLAUDE_PANE"
+  tmux select-pane -t "$CLAUDE_PANE"
 fi
-tmux select-pane -t "$CLAUDE_PANE"
