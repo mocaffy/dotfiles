@@ -1,92 +1,132 @@
 # dotfiles
 
-AstroNvim + Tmux + Alacritty の編成など (WezTerm + LunarVim にするかも)
+Nix/home-manager + AstroNvim + Tmux の開発環境構成。
 
 <!-- TOC -->
 
-- [インストール](#インストール)
-  - [NerdFont](#nerdfont)
-  - [Starship](#starship)
-  - [Alacritty](#alacritty)
-  - [Tmux](#tmux)
-  - [Neovim](#neovim)
-  - [AstroNvim](#astronvim)
-  - [Karabiner-Elements](#karabiner)
-  - [yabai](#yabai)
-  - [skhd](#skhd)
-  - [delta](#delta)
+- [構成概要](#構成概要)
 - [セットアップ](#セットアップ)
+  - [前提条件](#前提条件)
+  - [インストール](#インストール)
+  - [初回セットアップ後](#初回セットアップ後)
+- [ホスト設定](#ホスト設定)
+- [主要コンポーネント](#主要コンポーネント)
+  - [Neovim (AstroNvim)](#neovim-astronvim)
+  - [Tmux](#tmux)
+  - [シェル (Zsh)](#シェル-zsh)
+  - [ツール管理](#ツール管理)
+- [スクリプト](#スクリプト)
+- [プラットフォーム別設定](#プラットフォーム別設定)
 
 <!-- /TOC -->
 
-## インストール
-### NerdFont
-https://www.nerdfonts.com/
+## 構成概要
+
 ```
-brew tap homebrew/cask-fonts
-brew install --cask font-fira-code-nerd-font
-brew install --cask font-victor-mono-nerd-font
+dotfiles/
+├── flake.nix                # Nix Flake メインエントリポイント
+├── home/
+│   ├── common.nix           # 全プラットフォーム共通設定
+│   ├── linux.nix            # Linux/WSL 固有設定
+│   └── darwin.nix           # macOS 固有設定
+├── hosts/
+│   ├── wsl.nix              # WSL Ubuntu
+│   ├── mac.nix              # Intel Mac
+│   └── macbookair.nix       # Apple Silicon Mac
+├── scripts/
+│   ├── tmux-layout-setup.sh         # ワークスペース tmux セッション作成
+│   ├── tmux-window-layout-lib.sh    # tmux ペインレイアウトライブラリ
+│   ├── new-window.sh                # tmux ウィンドウ作成
+│   ├── peco-wt.sh                   # Git worktree 管理 (peco)
+│   ├── peco-wtd.sh                  # Git worktree 削除 (peco)
+│   ├── peco-src.sh                  # リポジトリ選択 (macOS)
+│   └── setup-keyd.sh                # keyd 設定インストール (Linux)
+└── .config/
+    ├── nvim/                # AstroNvim 設定
+    ├── tmux/                # tmux 設定
+    ├── alacritty/           # ターミナルエミュレータ設定
+    ├── lazygit/             # Git UI 設定
+    ├── mise/                # ランタイムバージョン管理
+    ├── keyd/                # Linux キーボードリマップ
+    ├── karabiner/           # macOS キーボードリマップ
+    ├── yabai/               # macOS ウィンドウマネージャ
+    ├── skhd/                # macOS ホットキー
+    ├── tridactyl/           # Firefox キーボード操作
+    └── vifm/                # ファイルマネージャ
 ```
-
-### Starship
-https://starship.rs/  
-`brew install starship`
-
-### Alacritty
-https://alacritty.org/  
-`brew install --cask alacritty`
-
-### Tmux
-https://github.com/tmux/tmux/wiki  
-`brew install tmux`
-
-### Neovim
-https://neovim.io/  
-`brew install neovim`
-
-### AstroNvim
-https://astronvim.github.io/  
-Make a backup of your current nvim folder  
-`mv ~/.config/nvim ~/.config/nvim.bak`  
-
-Clean neovim folders (Optional but recommended)
-```
-mv ~/.local/share/nvim ~/.local/share/nvim.bak
-mv ~/.local/state/nvim ~/.local/state/nvim.bak
-mv ~/.cache/nvim ~/.cache/nvim.bak
-```
-Clone the repository  
-`git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim`
 
 ## セットアップ
-### クローン
-`git clone https://github.com/mocaffy/dotfiles ~`
 
-### バックアップとシンボリックリンク
-(必要に応じて)  
+### 前提条件
 
-```
-mv ~/.config ~/.config.bak`
-mv ~/.zshrc ~/.zshrc.bak  
-mv ~/.zprofile ~/.zprofile.bak  
-```
+- [Nix](https://nixos.org/download/) がインストールされていること
+- Nix flakes が有効になっていること (`~/.config/nix/nix.conf` に `experimental-features = nix-command flakes`)
+- [home-manager](https://github.com/nix-community/home-manager) がインストールされていること
 
-```
-ln -fns ~/dotfiles/.config ~
-ln -fns ~/.config/astro-nvim ~/.config/nvim/lua/user
+### インストール
+
+```bash
+git clone https://github.com/mocaffy/dotfiles ~/dotfiles
 ```
 
-```
-ln -fns ~/.config/zsh/.zshrc ~
-ln -fns ~/.config/zsh/.zprofile ~
+ホストに合わせて home-manager を適用する:
+
+```bash
+# WSL Ubuntu
+home-manager switch --flake ~/dotfiles#mocaffy@wsl
+
+# Intel Mac
+home-manager switch --flake ~/dotfiles#mocaffy@mac
+
+# Apple Silicon Mac
+home-manager switch --flake ~/dotfiles#mocaffy@MacBookAir
 ```
 
-### tmux-256color のインストール
-https://gist.github.com/ssh352/785395faad3163b2e0de32649f7ed45c
-```
-curl -LO https://invisible-island.net/datafiles/current/terminfo.src.gz && gunzip terminfo.src.gz
-/usr/bin/tic -xe tmux-256color terminfo.src
+以後は `hms` エイリアスで更新できる:
+
+```bash
+hms   # home-manager switch --flake ~/dotfiles
 ```
 
-### Neovim プラグインのインストール  
-`nvim +"PackerSync"`
+### 初回セットアップ後
+
+**Linux: keyd のセットアップ**
+```bash
+~/dotfiles/scripts/setup-keyd.sh
+```
+
+**tmux プラグインのインストール**
+tmux を起動後、`prefix + I` で TPM プラグインをインストール。
+
+**ワークスペースセッションの作成**
+```bash
+~/dotfiles/scripts/tmux-layout-setup.sh
+```
+
+## ホスト設定
+
+| ホスト | ファイル | プラットフォーム |
+|--------|----------|-----------------|
+| `mocaffy@wsl` | `hosts/wsl.nix` | WSL Ubuntu |
+| `mocaffy@mac` | `hosts/mac.nix` | macOS |
+| `mocaffy@MacBookAir` | `hosts/macbookair.nix` | MacBook Air (Ubuntu) |
+
+## プラットフォーム別設定
+
+### Linux / WSL
+
+- **keyd**: CapsLock→Ctrl、Alt/Meta 入れ替え、Meta+hjkl で矢印キー
+- **フォント**: Noto Sans CJK JP、Fira Code Nerd Font
+- **GNOME**: Super+Shift+P でカラーピッカー
+
+### macOS
+
+- **Karabiner-Elements**: キーボードリマップ
+- **yabai**: タイリングウィンドウマネージャ
+- **skhd**: ウィンドウ操作ホットキー
+
+### 共通
+
+- **Alacritty**: ターミナルエミュレータ (透過・装飾なし・最大化起動)
+- **Tridactyl**: Firefox のキーボード操作
+- **vifm**: ターミナルファイルマネージャ
