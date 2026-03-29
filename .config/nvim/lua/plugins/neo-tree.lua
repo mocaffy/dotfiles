@@ -9,6 +9,10 @@ return {
         o = "open",
         H = "prev_source",
         L = "next_source",
+        ["<Leader>as"] = function(state)
+          local path = state.tree:get_node():get_id():gsub(vim.fn.expand("$HOME"), "~")
+          vim.fn.system({ os.getenv("HOME") .. "/dotfiles/scripts/send-to-claude.sh", path })
+        end,
       },
     },
     default_component_configs = {
