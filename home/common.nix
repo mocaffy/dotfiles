@@ -32,10 +32,16 @@
     shellAliases = {
       hms = "home-manager switch --flake ~/dotfiles#mocaffy@$(hostname)";
     };
+    autosuggestion.enable = true;
     initContent = ''
       set -o ignoreeof
       export PATH="$HOME/.local/bin:$PATH"
     '';
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.git = {
