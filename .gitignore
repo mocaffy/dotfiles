@@ -12,76 +12,20 @@
 !/home/**
 !/hosts/
 !/hosts/**
+!/programs/
+!/programs/**
 
 ## scripts
 !/scripts/
 !/scripts/**
-
-### alacritty
-!/.config/alacritty/
-!/.config/alacritty/**
-
-### AstroNvim
-!/.config/astro-nvim/
-!/.config/astro-nvim/**
-
-### karabiner
-!/.config/karabiner/
-!/.config/karabiner/karabiner.json
-!/.config/karabiner/assets/
-!/.config/karabiner/assets/**
-
-### lazygit
-!/.config/lazygit/
-!/.config/lazygit/**
-
-### neovim
-!/.config/nvim/
-!/.config/nvim/**
-
-### nvim-term
-!/.config/nvim-term/
-!/.config/nvim-term/**
-
-### skhd
-!/.config/skhd/
-!/.config/skhd/.skhdrc
-
-### triactyl
-!/.config/tridactyl/
-!/.config/tridactyl/**
-
-### vifm
-!/.config/vifm/
-!/.config/vifm/vifmrc
-
-### keyd
-!/.config/keyd/
-!/.config/keyd/**
-
-### tmux
-!/.config/tmux/
-!/.config/tmux/tmux.conf
-
-### yabai
-!/.config/yabai/
-!/.config/yabai/.yabairc
-
-### mise
-!/.config/mise/
-!/.config/mise/**
-
-### カラーテーマ
-!/.config/colors/
-!/.config/colors/**
 
 ## windows
 !/windows/
 !/windows/**
 
 ## Firefox
-!/Firefox/
-!/Firefox/**
+!/firefox/
+!/firefox/**
 
 .DS_Store
 !/.gitignore

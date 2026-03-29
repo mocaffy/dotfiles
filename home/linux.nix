@@ -12,7 +12,7 @@
     defaultFonts.sansSerif = [ "Noto Sans CJK JP" "sans-serif" ];
   };
 
-  xdg.configFile."alacritty-local.toml".source = ../.config/alacritty/linux.toml;
+  xdg.configFile."alacritty-local.toml".source = ../programs/alacritty/linux.toml;
 
   programs.zsh.initContent = ''
     eval "$(mise activate zsh)"

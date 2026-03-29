@@ -33,6 +33,13 @@ dotfiles/
 │   ├── wsl.nix              # WSL Ubuntu
 │   ├── mac.nix              # Intel Mac
 │   └── macbookair.nix       # Apple Silicon Mac
+├── programs/
+│   ├── default.nix          # 各プログラム module の集約
+│   ├── nvim/                # Neovim 設定と module
+│   ├── tmux/                # tmux 設定と module
+│   ├── claude/              # Claude Code 設定と module
+│   ├── alacritty/           # Alacritty 設定と platform 別差分
+│   └── ...                  # その他プログラムごとの設定
 ├── scripts/
 │   ├── tmux-layout-setup.sh         # ワークスペース tmux セッション作成
 │   ├── tmux-window-layout-lib.sh    # tmux ペインレイアウトライブラリ
@@ -41,19 +48,9 @@ dotfiles/
 │   ├── peco-wtd.sh                  # Git worktree 削除 (peco)
 │   ├── peco-src.sh                  # リポジトリ選択 (macOS)
 │   └── setup-keyd.sh                # keyd 設定インストール (Linux)
-└── .config/
-    ├── nvim/                # AstroNvim 設定
-    ├── tmux/                # tmux 設定
-    ├── alacritty/           # ターミナルエミュレータ設定
-    ├── lazygit/             # Git UI 設定
-    ├── mise/                # ランタイムバージョン管理
-    ├── keyd/                # Linux キーボードリマップ
-    ├── karabiner/           # macOS キーボードリマップ
-    ├── yabai/               # macOS ウィンドウマネージャ
-    ├── skhd/                # macOS ホットキー
-    ├── tridactyl/           # Firefox キーボード操作
-    └── vifm/                # ファイルマネージャ
 ```
+
+各プログラムの設定ファイルと Home Manager module を `programs/<name>/` にまとめ、`home/*.nix` は有効化と OS 差分だけを担当する構成。
 
 ## セットアップ
 

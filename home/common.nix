@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  imports = [ ../programs ];
+
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
@@ -77,15 +79,5 @@
     settings = {
       add_newline = false;
     };
-  };
-
-  xdg.configFile = {
-    "nvim".source = ../.config/nvim;
-    "tmux".source = ../.config/tmux;
-    "lazygit".source = ../.config/lazygit;
-    "mise".source = ../.config/mise;
-    "alacritty".source = ../.config/alacritty;
-    "tridactyl".source = ../.config/tridactyl;
-    "vifm".source = ../.config/vifm;
   };
 }
