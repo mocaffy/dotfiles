@@ -67,7 +67,7 @@
 
   home.activation.lefthookInstall = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     if [ -d "$HOME/dotfiles/.git" ]; then
-      cd "$HOME/dotfiles" && ${pkgs.lefthook}/bin/lefthook install
+      cd "$HOME/dotfiles" && PATH="${pkgs.git}/bin:$PATH" ${pkgs.lefthook}/bin/lefthook install
     fi
   '';
 
