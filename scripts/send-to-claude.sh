@@ -30,8 +30,13 @@ CURRENT_SESSION=$(tmux display-message -p '#{session_name}')
 CURRENT_WINDOW=$(tmux display-message -p '#{window_index}')
 
 CLAUDE_PANE=$(tmux list-panes -t "$CURRENT_SESSION:$CURRENT_WINDOW" \
-  -F '#{session_name}:#{window_index}.#{pane_index} #{pane_current_command}' \
-  | grep ' claude$' | head -1 | awk '{print $1}')
+  -F '#{session_name}:#{window_index}.#{pane_index} #{pane_pid}' \
+  | while read -r pane pid; do
+      if ps -o args= -p "$pid" 2>/dev/null | grep -qE '(^|/)claude( |$)'; then
+        echo "$pane"
+        break
+      fi
+    done)
 
 if [ -z "$CLAUDE_PANE" ]; then
   tmux display-message "Claude ペインが見つかりません"
