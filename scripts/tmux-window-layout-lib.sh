@@ -21,8 +21,8 @@ setup_window_panes() {
   tmux split-window "${t_flag[@]}" -h -p 33 -c "#{pane_current_path}" "zsh -ic 'claude'"
   tmux set "${t_flag[@]}" -p remain-on-exit on
 
-  # 右側を縦分割してnodeを下に起動
-  tmux split-window "${t_flag[@]}" -v -p 25 -c "#{pane_current_path}" "node"
+  # 右側を縦分割して下に空ペインを確保 (ワークスペースのダッシュボードを表示する予定)
+  tmux split-window "${t_flag[@]}" -v -p 25 -c "#{pane_current_path}" "cat"
   tmux set "${t_flag[@]}" -p remain-on-exit on
 
   # 左上のペインを縦分割して下にzsh x2 のエリアを確保
