@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   imports = [ ../programs ];
 
   home.stateVersion = "24.11";
@@ -13,6 +14,7 @@
     gh
     python3
     mise
+    lefthook
   ];
 
   home.sessionVariables = {
@@ -62,6 +64,12 @@
       bindkey '^R' fzf-history-widget
     '';
   };
+
+  home.activation.lefthookInstall = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if [ -d "$HOME/dotfiles/.git" ]; then
+      cd "$HOME/dotfiles" && ${pkgs.lefthook}/bin/lefthook install
+    fi
+  '';
 
   home.activation.miseTrust = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ${pkgs.mise}/bin/mise trust --all

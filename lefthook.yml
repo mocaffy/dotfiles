@@ -1,0 +1,5 @@
+pre-commit:
+  commands:
+    treefmt:
+      run: nix fmt -- --no-cache {staged_files}
+      stage_fixed: true

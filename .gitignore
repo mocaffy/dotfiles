@@ -29,4 +29,5 @@
 
 .DS_Store
 !/.gitignore
+!/lefthook.yml
 *node_modules/
