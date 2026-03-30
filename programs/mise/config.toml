@@ -9,3 +9,6 @@
 
 # ランタイム（プロジェクトごとのバージョン管理のため mise で継続）
 node = "22"
+python = "latest"
+pnpm = "latest"
+go = "latest"
