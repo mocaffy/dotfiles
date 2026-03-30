@@ -93,28 +93,25 @@ return {
 
         -- Tmux
         ["<Leader>tt"] = { desc = "Tmux" },
-        ["<Leader>ttks"] = { "<Cmd>call system('tmux kill-session')<CR>", desc = "Kill Session" },
-        ["<Leader>ttkw"] = { "<Cmd>call system('tmux kill-window')<CR>", desc = "Kill Window" },
         ["<Leader>ttd"] = { "<Cmd>call system('tmux detach')<CR>", desc = "Detach Session" },
         ["<Leader>ttr"] = { "<Cmd>call system('tmux respawn-pane -k')<CR>", desc = "Restart Neovim" },
-        ["<Leader>ttz"] = { "<Cmd>call system('tmux resize-pane -Z')<CR>", desc = "Toggle Maximize" },
-        ["<leader>ttn"] = {
+        ["<Leader>ttn"] = { desc = "New" },
+        ["<leader>ttnr"] = {
           function() require("astrocore").toggle_term_cmd "~/dotfiles/scripts/peco-src.sh" end,
-          desc = "Open Workspace",
+          desc = "Open GIt Repository",
         },
-        ["<leader>ttw"] = {
+        ["<leader>ttns"] = {
           function() require("astrocore").toggle_term_cmd "~/dotfiles/scripts/peco-src-session.sh" end,
           desc = "Open Workspace Session",
         },
-        ["<leader>ttt"] = {
+        ["<leader>ttnt"] = {
           function() require("astrocore").toggle_term_cmd "~/dotfiles/scripts/peco-wt.sh" end,
           desc = "Create/Open Worktree",
         },
-        ["<leader>ttdw"] = {
-          function() require("astrocore").toggle_term_cmd "~/dotfiles/scripts/peco-wtd.sh" end,
-          desc = "Delete Worktree",
-        },
-        ["<leader>ttdf"] = {
+        ["<Leader>ttk"] = { desc = "Kill" },
+        ["<Leader>ttks"] = { "<Cmd>call system('tmux kill-session')<CR>", desc = "Kill Session" },
+        ["<Leader>ttkw"] = { "<Cmd>call system('tmux kill-window')<CR>", desc = "Kill Window" },
+        ["<leader>ttktf"] = {
           function() require("astrocore").toggle_term_cmd "~/dotfiles/scripts/force-delete-wt.sh" end,
           desc = "Force Delete Current Worktree",
         },
