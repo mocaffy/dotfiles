@@ -32,7 +32,7 @@
       share = true;
     };
     shellAliases = {
-      hms = "home-manager switch --flake ~/dotfiles#mocaffy@$(hostname)";
+      hms = "home-manager switch --impure --flake ~/dotfiles#mocaffy@$(if [ \"$(uname)\" = 'Darwin' ]; then echo mac; else echo wsl; fi)";
       ws = "~/dotfiles/scripts/tmux-layout-setup.sh";
     };
     autosuggestion.enable = true;

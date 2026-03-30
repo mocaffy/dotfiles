@@ -1,9 +1,13 @@
-{ ... }: {
+{ ... }:
+let
+  user = builtins.getEnv "USER";
+in
+{
   imports = [
     ../home/common.nix
     ../home/darwin.nix
   ];
 
-  home.username = "mocaffy";
-  home.homeDirectory = "/Users/mocaffy";
+  home.username = user;
+  home.homeDirectory = "/Users/${user}";
 }
