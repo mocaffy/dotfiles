@@ -1,3 +1,6 @@
+[settings]
+python.compile = false
+
 [tools]
 # Nix で管理するものを削除
 # ghq = "latest"
