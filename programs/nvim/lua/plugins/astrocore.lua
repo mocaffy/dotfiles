@@ -114,6 +114,10 @@ return {
           function() require("astrocore").toggle_term_cmd "~/dotfiles/scripts/peco-wtd.sh" end,
           desc = "Delete Worktree",
         },
+        ["<leader>ttdf"] = {
+          function() require("astrocore").toggle_term_cmd "~/dotfiles/scripts/force-delete-wt.sh" end,
+          desc = "Force Delete Current Worktree",
+        },
 
         -- nnn
         -- ["<leader>E"] = { function() require("astrocore").toggle_term_cmd " export NNN_PLUG='p:preview-tui' && nnn -a" end, desc = "nnn" },
