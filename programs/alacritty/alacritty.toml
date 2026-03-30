@@ -34,11 +34,8 @@ dynamic_padding = true # Default: false
 # Window decorations
 decorations = "None" # Default: "Full"
 
-# Opacity
-opacity = 0 # Default: 1.0
-
 # Request compositor to blur content behind transparent windows.
-blur = false # Default: false
+blur = true # Default: false
 
 # Startup mode (changes require restart)
 startup_mode = "Maximized" # Default: "Windowed"
