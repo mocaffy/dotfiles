@@ -110,6 +110,7 @@
     enableZshIntegration = true;
     settings = {
       add_newline = false;
+      golang.disabled = true;
     };
   };
 }
