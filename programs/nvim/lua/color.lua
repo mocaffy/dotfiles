@@ -78,7 +78,7 @@ require("nightfox").setup {
       diag_bg = duskfox_specs.diag_bg,
       diff = duskfox_specs.diff,
       -- git = duskfox_specs.git
-    }
+    },
   },
   groups = {
     all = {

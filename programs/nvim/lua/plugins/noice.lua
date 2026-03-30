@@ -3,14 +3,14 @@ return {
   "folke/noice.nvim",
   -- enabled = false,
   config = function()
-    require("noice").setup({
+    require("noice").setup {
       lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true,
-          ["config.lsp.hover.enabled"] = false
+          ["config.lsp.hover.enabled"] = false,
         },
         signature = { enabled = false },
         hover = { enabled = false },
@@ -24,6 +24,6 @@ return {
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = false, -- add a border to hover docs and signature help
       },
-    })
+    }
   end,
 }

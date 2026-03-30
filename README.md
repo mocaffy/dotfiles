@@ -88,6 +88,7 @@ hms   # home-manager switch --flake ~/dotfiles
 ### 初回セットアップ後
 
 **Linux: keyd のセットアップ**
+
 ```bash
 ~/dotfiles/scripts/setup-keyd.sh
 ```
@@ -96,16 +97,17 @@ hms   # home-manager switch --flake ~/dotfiles
 tmux を起動後、`prefix + I` で TPM プラグインをインストール。
 
 **ワークスペースセッションの作成**
+
 ```bash
 ~/dotfiles/scripts/tmux-layout-setup.sh
 ```
 
 ## ホスト設定
 
-| ホスト | ファイル | プラットフォーム |
-|--------|----------|-----------------|
-| `mocaffy@wsl` | `hosts/wsl.nix` | WSL Ubuntu |
-| `mocaffy@mac` | `hosts/mac.nix` | macOS |
+| ホスト               | ファイル               | プラットフォーム     |
+| -------------------- | ---------------------- | -------------------- |
+| `mocaffy@wsl`        | `hosts/wsl.nix`        | WSL Ubuntu           |
+| `mocaffy@mac`        | `hosts/mac.nix`        | macOS                |
 | `mocaffy@MacBookAir` | `hosts/macbookair.nix` | MacBook Air (Ubuntu) |
 
 ## プラットフォーム別設定

@@ -11,14 +11,14 @@ return {
         L = "next_source",
         ["<Leader>as"] = function(state)
           local path = vim.fn.fnamemodify(state.tree:get_node():get_id(), ":.")
-          vim.fn.system({ os.getenv("HOME") .. "/dotfiles/scripts/send-to-claude.sh", "-f", "@" .. path })
+          vim.fn.system { os.getenv "HOME" .. "/dotfiles/scripts/send-to-claude.sh", "-f", "@" .. path }
         end,
       },
     },
     default_component_configs = {
       indent = {
         with_markers = false,
-        with_expanders = false
+        with_expanders = false,
       },
       icon = {
         folder_closed = "",

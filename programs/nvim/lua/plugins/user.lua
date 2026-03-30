@@ -9,7 +9,7 @@ return {
   {
     "tridactyl/vim-tridactyl",
     lazy = true,
-    event = "BufEnter tridactylrc"
+    event = "BufEnter tridactylrc",
   },
 
   -- markdown プレビュー

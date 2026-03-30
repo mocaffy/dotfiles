@@ -25,71 +25,95 @@ To make startup faster for most users, Firefox 69 will no longer look for this f
 That change should take effect on your next startup.
 
 ***/
-@media (-moz-os-version: windows-win10){
-
-  :root[sizemode="maximized"]:not([inDOMFullscreen]){ margin-top: 10px !important; }
-  :root[sizemode="maximized"] #navigator-toolbox{ margin-top: -2px }
-
-  @media screen and (min-resolution: 1.25dppx){
-    :root[sizemode="maximized"]:not([inDOMFullscreen]){ margin-top: 9px !important; }
+@media (-moz-os-version: windows-win10) {
+  :root[sizemode="maximized"]:not([inDOMFullscreen]) {
+    margin-top: 10px !important;
   }
-  @media screen and (min-resolution: 1.5dppx){
-    :root[sizemode="maximized"]:not([inDOMFullscreen]){ margin-top: 8px !important; }
-    :root[sizemode="maximized"] #navigator-toolbox{ margin-top: -1px }
+  :root[sizemode="maximized"] #navigator-toolbox {
+    margin-top: -2px;
   }
-  @media screen and (min-resolution: 2dppx){
-    :root[sizemode="maximized"]:not([inDOMFullscreen]){ margin-top: 7px !important; }
+
+  @media screen and (min-resolution: 1.25dppx) {
+    :root[sizemode="maximized"]:not([inDOMFullscreen]) {
+      margin-top: 9px !important;
+    }
+  }
+  @media screen and (min-resolution: 1.5dppx) {
+    :root[sizemode="maximized"]:not([inDOMFullscreen]) {
+      margin-top: 8px !important;
+    }
+    :root[sizemode="maximized"] #navigator-toolbox {
+      margin-top: -1px;
+    }
+  }
+  @media screen and (min-resolution: 2dppx) {
+    :root[sizemode="maximized"]:not([inDOMFullscreen]) {
+      margin-top: 7px !important;
+    }
   }
 }
 
-:root[sizemode="fullscreen"]{ margin-top: 0px !important; }
+:root[sizemode="fullscreen"] {
+  margin-top: 0px !important;
+}
 
-#navigator-toolbox{
-  border: 4px solid #0C1125 !important;
+#navigator-toolbox {
+  border: 4px solid #0c1125 !important;
   border-bottom: none !important;
-  box-sizing:border-box;
+  box-sizing: border-box;
   position: fixed !important;
   display: block;
-  background-color: var(--lwt-accent-color,black) !important;
-  transition: transform 82ms 33ms linear, opacity 82ms 33ms linear !important;
+  background-color: var(--lwt-accent-color, black) !important;
+  transition:
+    transform 82ms 33ms linear,
+    opacity 82ms 33ms linear !important;
   transform-origin: top;
   line-height: 5px;
   z-index: 1;
   width: 100vw;
 }
 
-#navigator-toolbox > *{ line-height: normal }
+#navigator-toolbox > * {
+  line-height: normal;
+}
 
-#navigator-toolbox > *{
+#navigator-toolbox > * {
   width: 100%;
   -moz-appearance: none !important;
 }
 
-#navigator-toolbox:not(:focus-within):not(:hover){
+#navigator-toolbox:not(:focus-within):not(:hover) {
   transform: rotateX(86deg);
   opacity: 0;
 }
 
-:root[sizemode="maximized"] #navigator-toolbox:not(:focus-within):not(:hover){ transform: rotateX(89.5deg) }
+:root[sizemode="maximized"] #navigator-toolbox:not(:focus-within):not(:hover) {
+  transform: rotateX(89.5deg);
+}
 
 /* Don't apply transform before window has been fully created */
-:root:not([sessionrestored]) #navigator-toolbox{ transform:none !important }
+:root:not([sessionrestored]) #navigator-toolbox {
+  transform: none !important;
+}
 
-:root[customizing] #navigator-toolbox{
+:root[customizing] #navigator-toolbox {
   position: relative !important;
   transform: none !important;
   opacity: 1 !important;
 }
 
 #navigator-toolbox[inFullscreen] > #PersonalToolbar,
-#PersonalToolbar[collapsed="true"]{ display: none }
+#PersonalToolbar[collapsed="true"] {
+  display: none;
+}
 
 /* Uncomment this if tabs toolbar is hidden with hide_tabs_toolbar.css */
- /*#titlebar{ margin-bottom: -9px }*/
+/*#titlebar{ margin-bottom: -9px }*/
 
-#browser, #browser-bottombox {
- /* Gray side borders for content area and bottom toolbars */
- border: 4px solid #0C1125 !important;
+#browser,
+#browser-bottombox {
+  /* Gray side borders for content area and bottom toolbars */
+  border: 4px solid #0c1125 !important;
 }
 
 #sidebar-box {
@@ -98,7 +122,7 @@ That change should take effect on your next startup.
 
 #sidebar-splitter {
   width: 4px !important;
-  background-color: #0C1125 !important;
+  background-color: #0c1125 !important;
 }
 
 #sidebar {
@@ -107,14 +131,14 @@ That change should take effect on your next startup.
 }
 
 #sidebar-header {
- position: absolute;
- bottom: 0;
- height: 24px;
- width: 100%;
- padding: 0!important;
- background-color: #0C1125;
- font-size: 10px !important;
- border-width: 0px !important;
+  position: absolute;
+  bottom: 0;
+  height: 24px;
+  width: 100%;
+  padding: 0 !important;
+  background-color: #0c1125;
+  font-size: 10px !important;
+  border-width: 0px !important;
 }
 
 #sidebar-switcher-target {
@@ -122,7 +146,7 @@ That change should take effect on your next startup.
 }
 
 #sidebar-switcher-target:hover {
-  background-color: #0C1125;
+  background-color: #0c1125;
 }
 
 #sidebar-icon {
@@ -132,5 +156,5 @@ That change should take effect on your next startup.
 #sidebar-close {
   width: 16px !important;
   height: 16px !important;
-  margin-right: 8px !important; 
+  margin-right: 8px !important;
 }

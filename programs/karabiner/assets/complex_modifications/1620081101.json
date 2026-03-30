@@ -5,9 +5,7 @@
       "description": "Firefox esc でページにフォーカス",
       "conditions": [
         {
-          "bundle_identifiers": [
-            "^org\\.mozilla\\.firefox$"
-          ],
+          "bundle_identifiers": ["^org\\.mozilla\\.firefox$"],
           "type": "frontmost_application_if"
         }
       ],
@@ -19,9 +17,7 @@
           "to": [
             {
               "key_code": "f6",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "key_code": "escape"
@@ -35,9 +31,7 @@
       "description": "Firefox タブ切り替え l-cmd + ctrl + J/K",
       "conditions": [
         {
-          "bundle_identifiers": [
-            "^org\\.mozilla\\.firefox$"
-          ],
+          "bundle_identifiers": ["^org\\.mozilla\\.firefox$"],
           "type": "frontmost_application_if"
         }
       ],
@@ -46,18 +40,13 @@
           "from": {
             "key_code": "j",
             "modifiers": {
-              "mandatory": [
-                "left_command",
-                "left_control"
-              ]
+              "mandatory": ["left_command", "left_control"]
             }
           },
           "to": [
             {
               "key_code": "tab",
-              "modifiers": [
-                "left_control"
-              ]
+              "modifiers": ["left_control"]
             }
           ],
           "type": "basic"
@@ -66,19 +55,13 @@
           "from": {
             "key_code": "k",
             "modifiers": {
-              "mandatory": [
-                "left_command",
-                "left_control"
-              ]
+              "mandatory": ["left_command", "left_control"]
             }
           },
           "to": [
             {
               "key_code": "tab",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
+              "modifiers": ["left_control", "left_shift"]
             }
           ],
           "type": "basic"
@@ -92,9 +75,7 @@
           "from": {
             "key_code": "left_command",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "parameters": {
@@ -122,9 +103,7 @@
           "from": {
             "key_code": "right_command",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "parameters": {
@@ -157,12 +136,8 @@
           "from": {
             "key_code": "h",
             "modifiers": {
-              "mandatory": [
-                "left_command"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["left_command"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -176,12 +151,8 @@
           "from": {
             "key_code": "j",
             "modifiers": {
-              "mandatory": [
-                "left_command"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["left_command"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -195,12 +166,8 @@
           "from": {
             "key_code": "k",
             "modifiers": {
-              "mandatory": [
-                "left_command"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["left_command"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -214,12 +181,8 @@
           "from": {
             "key_code": "l",
             "modifiers": {
-              "mandatory": [
-                "left_command"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["left_command"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -239,12 +202,8 @@
           "from": {
             "key_code": "u",
             "modifiers": {
-              "mandatory": [
-                "left_command"
-              ],
-              "optional": [
-                "any"
-              ]
+              "mandatory": ["left_command"],
+              "optional": ["any"]
             }
           },
           "to": [
@@ -258,12 +217,8 @@
           "from": {
             "key_code": "i",
             "modifiers": {
-              "mandatory": [
-                "command"
-              ],
-              "optional": [
-                "any"
-              ]
+              "mandatory": ["command"],
+              "optional": ["any"]
             }
           },
           "to": [
@@ -272,7 +227,6 @@
             }
           ]
         }
-       
       ]
     }
   ]

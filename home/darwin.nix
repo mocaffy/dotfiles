@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # macOS 固有の設定
 
   xdg.configFile = {

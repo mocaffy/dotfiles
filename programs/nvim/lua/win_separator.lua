@@ -3,16 +3,16 @@
 local M = {}
 
 -- Namespace の定義
-local NS_ACTIVE = vim.api.nvim_create_namespace("splitactive")
-local NS_INACTIVE = vim.api.nvim_create_namespace("splitinactive")
+local NS_ACTIVE = vim.api.nvim_create_namespace "splitactive"
+local NS_INACTIVE = vim.api.nvim_create_namespace "splitinactive"
 
 -- ハイライト情報格納用テーブル
 local hl_colors = {
-  normal    = {},
+  normal = {},
   normal_nc = {},
-  winbar    = {},
+  winbar = {},
   winbar_nc = {},
-  winsep    = {},
+  winsep = {},
   winsep_nc = {},
 }
 
@@ -31,15 +31,15 @@ end
 local function set_color_config()
   -- 新しい API: nvim_get_hl(0, { name = "GroupName" })
   -- 返り値は { fg = <number>, bg = <number>, ... } のようなテーブル
-  hl_colors.normal    = vim.api.nvim_get_hl(0, { name = "Normal", link = false })
+  hl_colors.normal = vim.api.nvim_get_hl(0, { name = "Normal", link = false })
   hl_colors.normal_nc = vim.api.nvim_get_hl(0, { name = "NormalNC", link = false })
-  hl_colors.winbar    = vim.api.nvim_get_hl(0, { name = "WinBar", link = false })
+  hl_colors.winbar = vim.api.nvim_get_hl(0, { name = "WinBar", link = false })
   hl_colors.winbar_nc = vim.api.nvim_get_hl(0, { name = "WinBarNC", link = false })
-  hl_colors.winsep    = vim.api.nvim_get_hl(0, { name = "WinSeparator", link = false })
+  hl_colors.winsep = vim.api.nvim_get_hl(0, { name = "WinSeparator", link = false })
   hl_colors.winsep_nc = vim.api.nvim_get_hl(0, { name = "WinSeparatorNC", link = false })
 
   -- Namespace 用ハイライト (WinSeparator のみ)
-  set_hl(NS_ACTIVE,   "WinSeparator", hl_colors.winsep)
+  set_hl(NS_ACTIVE, "WinSeparator", hl_colors.winsep)
   set_hl(NS_INACTIVE, "WinSeparator", hl_colors.winsep_nc)
 end
 
@@ -48,11 +48,11 @@ end
 local function update_left(active)
   local current_win = vim.api.nvim_get_current_win()
   -- 古い nvim_command_output("echo win_getid(winnr('h'))") を置き換え
-  local left_win = vim.fn.win_getid(vim.fn.winnr("h"))  -- 0 はウィンドウが存在しない場合
+  local left_win = vim.fn.win_getid(vim.fn.winnr "h") -- 0 はウィンドウが存在しない場合
 
   if left_win ~= 0 and left_win ~= current_win then
     -- 古い nvim_command_output("echo getbufvar(winbufnr(...), '&filetype')") を置き換え
-    local left_ft = vim.fn.getbufvar(vim.fn.winbufnr(vim.fn.winnr("h")), "&filetype", "unknown")
+    local left_ft = vim.fn.getbufvar(vim.fn.winbufnr(vim.fn.winnr "h"), "&filetype", "unknown")
 
     if left_ft == "neo-tree" then
       -- Neo-Tree の WinSeparator
@@ -71,8 +71,8 @@ end
 
 --- フォーカスが外れた際のハイライト
 local function focus_lost()
-  set_hl(0, "Normal",  hl_colors.normal_nc)
-  set_hl(0, "WinBar",  hl_colors.winbar_nc)
+  set_hl(0, "Normal", hl_colors.normal_nc)
+  set_hl(0, "WinBar", hl_colors.winbar_nc)
   update_left(false)
 end
 
@@ -87,16 +87,12 @@ end
 local function setup_autocmds()
   vim.api.nvim_create_autocmd("WinLeave", {
     pattern = "*",
-    callback = function()
-      update_left(false)
-    end,
+    callback = function() update_left(false) end,
   })
 
   vim.api.nvim_create_autocmd({ "WinEnter", "WinNew" }, {
     pattern = "*",
-    callback = function()
-      update_left(true)
-    end,
+    callback = function() update_left(true) end,
   })
 
   vim.api.nvim_create_autocmd("FocusLost", {
