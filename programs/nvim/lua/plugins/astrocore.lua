@@ -102,6 +102,14 @@ return {
           function() require("astrocore").toggle_term_cmd "~/dotfiles/scripts/peco-src.sh" end,
           desc = "Open Workspace",
         },
+        ["<leader>ttw"] = {
+          function() require("astrocore").toggle_term_cmd "~/dotfiles/.bin/peco-wt.sh" end,
+          desc = "Create/Open Worktree",
+        },
+        ["<leader>ttdw"] = {
+          function() require("astrocore").toggle_term_cmd "~/dotfiles/.bin/peco-wtd.sh" end,
+          desc = "Delete Worktree",
+        },
 
         -- nnn
         -- ["<leader>E"] = { function() require("astrocore").toggle_term_cmd " export NNN_PLUG='p:preview-tui' && nnn -a" end, desc = "nnn" },
