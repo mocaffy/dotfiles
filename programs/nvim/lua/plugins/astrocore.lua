@@ -103,6 +103,10 @@ return {
           desc = "Open Workspace",
         },
         ["<leader>ttw"] = {
+          function() require("astrocore").toggle_term_cmd "~/dotfiles/scripts/peco-src-session.sh" end,
+          desc = "Open Workspace Session",
+        },
+        ["<leader>ttt"] = {
           function() require("astrocore").toggle_term_cmd "~/dotfiles/scripts/peco-wt.sh" end,
           desc = "Create/Open Worktree",
         },
