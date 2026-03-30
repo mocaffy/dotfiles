@@ -2,7 +2,7 @@
 program = "/bin/zsh"
 
 [font]
-size = 8.4
+size = 11
 
 [window]
 padding = { x = 8, y = 8 }
