@@ -2,7 +2,6 @@
   # WSL / Linux 固有の設定
 
   home.packages = with pkgs; [
-    mise
     nerd-fonts.fira-code
     noto-fonts-cjk-sans
   ];
@@ -13,18 +12,6 @@
   };
 
   xdg.configFile."alacritty-local.toml".source = ../programs/alacritty/linux.toml;
-
-  programs.zsh.initContent = ''
-    eval "$(mise activate zsh)"
-  '';
-
-  home.activation.miseTrust = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ${pkgs.mise}/bin/mise trust --all
-  '';
-
-  home.activation.miseInstall = lib.hm.dag.entryAfter [ "miseTrust" ] ''
-    ${pkgs.mise}/bin/mise install
-  '';
 
   dconf.settings = {
     "org/gnome/settings-daemon/plugins/media-keys" = {

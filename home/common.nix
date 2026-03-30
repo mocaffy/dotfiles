@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   imports = [ ../programs ];
 
   home.stateVersion = "24.11";
@@ -12,6 +12,7 @@
     tmux
     gh
     python3
+    mise
   ];
 
   home.sessionVariables = {
@@ -37,6 +38,7 @@
     };
     autosuggestion.enable = true;
     initContent = ''
+      eval "$(mise activate zsh)"
       unsetopt PROMPT_SP
       set -o ignoreeof
       export PATH="$HOME/.local/bin:$PATH"
@@ -60,6 +62,14 @@
       bindkey '^R' fzf-history-widget
     '';
   };
+
+  home.activation.miseTrust = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ${pkgs.mise}/bin/mise trust --all
+  '';
+
+  home.activation.miseInstall = lib.hm.dag.entryAfter [ "miseTrust" ] ''
+    ${pkgs.mise}/bin/mise install
+  '';
 
   programs.fzf = {
     enable = true;
