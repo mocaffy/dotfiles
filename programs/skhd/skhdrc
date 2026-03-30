@@ -1,7 +1,7 @@
 # dropdown terminal
 
-ctrl + cmd - h : tmux prev
-ctrl + cmd - l : tmux next
+# ctrl + cmd - h : tmux prev
+# ctrl + cmd - l : tmux next
 
 ctrl - z     : tmux resizep -t 0 -Z
 
