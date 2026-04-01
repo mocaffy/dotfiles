@@ -99,6 +99,10 @@
 
   programs.git = {
     enable = true;
+    ignores = [
+      "**/.claude/settings.local.json"
+      ".husky"
+    ];
     settings = {
       ghq.root = "~/development";
     };
