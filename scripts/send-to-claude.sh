@@ -32,7 +32,7 @@ CURRENT_WINDOW=$(tmux display-message -p '#{window_index}')
 CLAUDE_PANE=$(tmux list-panes -t "$CURRENT_SESSION:$CURRENT_WINDOW" \
   -F '#{session_name}:#{window_index}.#{pane_index} #{pane_pid}' \
   | while read -r pane pid; do
-      if ps -o args= -p "$pid" 2>/dev/null | grep -qE '(^|/)claude( |$)'; then
+      if ps -o args= -p "$pid" 2>/dev/null | grep -qE '(^|/| )claude( |$)'; then
         echo "$pane"
         break
       fi
